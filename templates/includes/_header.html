@@ -9,22 +9,23 @@
               data-target="#navbar"
               aria-expanded="false"
               aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
+        <span class="sr-only">展开/收起导航条</span>
         <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
       </button>
 
       <a href="/" class="logo navbar-nav">
-        <img src="{% static 'images/logo.png' %}" alt="Lutris" />
-        <span>Lutris</span>
+        <img src="{% static 'images/logo.png' %}" alt="Wine游戏助手" />
+        <span>Wine游戏助手</span>
       </a>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav" id="main-nav">
-        <li><a href="{% url 'downloads' %}" class="main-nav-button">Download</a></li>
-        <li><a href="{% url 'donate' %}">Support us!</a></li>
-        <li><a href="{% url 'game_list' %}">Games</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'downloads' %}" class="main-nav-button">下载安装</a></li>
+        <li><a href="{% url 'game_list' %}">游戏列表</a></li>
+        <li><a href="{% url 'game_list' %}">软件列表</a></li>
+        <li><a href="https://hu60.cn/q.php/bbs.forum.170.html">论坛</a></li>
+        <li><a href="{% url 'about' %}">关于我们</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -35,7 +36,7 @@
                       name="q"
                       class="search-query form-control"
                       id="global-search"
-                      placeholder="Search…" />
+                      placeholder="搜索…" />
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="submit">
                     <span class="sr-only">Search</span>
@@ -55,8 +56,8 @@
           </div>
         {% else %}
           <div class="account-action">
-            <a href="{% url 'login' %}">Sign-in</a>
-            <a href="{% url 'register' %}"><strong>Register</strong></a>
+            <a href="{% url 'login' %}">登录</a>
+            <a href="{% url 'register' %}"><strong>注册</strong></a>
           </div>
         {% endif %}
       </ul>
