@@ -172,7 +172,7 @@ def profile_delete(request, username):
     if form.is_valid():
         logout(request)
         user.deactivate()
-        messages.success(request, 'Your account is now deleted')
+        messages.success(request, '你的帐户已被永久删除')
         return redirect(reverse('homepage'))
     return render(request, 'accounts/profile_delete.html', {'form': form})
 

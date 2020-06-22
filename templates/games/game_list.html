@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 {% load append_to_get %}
-{% block title %}Games - Lutris{% endblock %}
+{% block title %}游戏列表 - Wine游戏助手{% endblock %}
 {% block extra_head %}
 {{ filter_form.media.css }}
 {% endblock %}
@@ -9,32 +9,32 @@
 
 <!-- HEADER -->
 <div class="header-wrap">
-  <h1>Games <small>{{ paginator.count }} entries
-    {% if unpublished_match_count > 0 %}<b>({{unpublished_match_count}} unpublished)</b> {% endif %}</small>
+  <h1>游戏列表 <small>共 {{ paginator.count }} 个
+    {% if unpublished_match_count > 0 %}<b>({{unpublished_match_count}} 个尚未发布)</b> {% endif %}</small>
     <span style="float: right;font-size: initial;margin-right: 1em;">
-        Order by
+        排序
         <select id="order_by" style="color:black;"
                 data-filter="{{ filter_string }}"
                 onchange="changeLibraryOrderBy();">
-          <option value="name" {% if order_by == 'name' %} selected {% endif %}>Name &uarr;</option>
-          <option value="-name" {% if order_by == '-name' %} selected {% endif %}>Name &darr;</option>
-          <option value="year" {% if order_by == 'year' %} selected {% endif %}>Year &uarr;</option>
-          <option value="-year" {% if order_by == '-year' %} selected {% endif %}>Year &darr;</option>
-          <option value="popularity" {% if order_by == 'popularity' %} selected {% endif %}>Popularity &uarr;</option>
-          <option value="-popularity" {% if order_by == '-popularity' %} selected {% endif %}>Popularity &darr;</option>
-          <option value="created" {% if order_by == 'created' %} selected {% endif %}>Created &uarr;</option>
-          <option value="-created" {% if order_by == '-created' %} selected {% endif %}>Created &darr;</option>
-          <option value="updated" {% if order_by == 'updated' %} selected {% endif %}>Updated &uarr;</option>
-          <option value="-updated" {% if order_by == '-updated' %} selected {% endif %}>Updated &darr;</option>
+          <option value="name" {% if order_by == 'name' %} selected {% endif %}>名称 &uarr;</option>
+          <option value="-name" {% if order_by == '-name' %} selected {% endif %}>名称 &darr;</option>
+          <option value="year" {% if order_by == 'year' %} selected {% endif %}>年份 &uarr;</option>
+          <option value="-year" {% if order_by == '-year' %} selected {% endif %}>年份 &darr;</option>
+          <option value="popularity" {% if order_by == 'popularity' %} selected {% endif %}>热度 &uarr;</option>
+          <option value="-popularity" {% if order_by == '-popularity' %} selected {% endif %}>热度 &darr;</option>
+          <option value="created" {% if order_by == 'created' %} selected {% endif %}>创建日期 &uarr;</option>
+          <option value="-created" {% if order_by == '-created' %} selected {% endif %}>创建日期 &darr;</option>
+          <option value="updated" {% if order_by == 'updated' %} selected {% endif %}>更新日期 &uarr;</option>
+          <option value="-updated" {% if order_by == '-updated' %} selected {% endif %}>更新日期 &darr;</option>
         </select>
     </span>
   </h1>
   {% if is_paginated %}
   <div class="row">
     <div class="col-md-12">
-      <span style="line-height: 33px;">Games {{ page_obj.start_index }} - {{ page_obj.end_index }} of {{ paginator.count }}</span>
+      <span style="line-height: 33px;">第 {{ page_obj.start_index }} - {{ page_obj.end_index }} 个游戏，共 {{ paginator.count }} 个</span>
       <span style="float: right;">
-          Show
+          每页
           <select id="paginate_by" style="color:black;"
                   data-filter="{{ filter_string }}"
                   onchange="changeLibraryPaginateCount();">
@@ -42,7 +42,7 @@
             <option value="50" {% if paginate_by == '50' %} selected {% endif %}>50</option>
             <option value="100" {% if paginate_by == '100' %} selected {% endif %}>100</option>
           </select>
-          per page
+          条
       </span>
     </div>
   </div>
@@ -63,19 +63,15 @@
         <p class="filter-failure-icon">
           <span class="glyphicon glyphicon-alert"></span>
         </p>
-        <p>No games found that match these criteria.</p>
+        <p>找不到符合筛选条件的游戏</p>
         {% if not unpublished and unpublished_match_count > 0 %}
           <p>
-            However, <a href="{% append_to_get unpublished-filter='on' %}">{{ unpublished_match_count }} unpublished
-            {% if unpublished_match_count == 1 %}
-              game</a> does.
-            {% else %}
-              games</a> do.
-            {% endif %}
+            不过，有 <a href="{% append_to_get unpublished-filter='on' %}">{{ unpublished_match_count }} 个未发布游戏符合筛选条件，
+            你可以勾选“显示尚未发布的游戏”来显示它们。
           </p>
         {% else %}
           <p>
-            Feel free to <a href="{% url 'game-submit' %}">add the game</a> to our database.
+            你可以考虑向我们的数据库<a href="{% url 'game-submit' %}">提交游戏</a>
           </p>
         {% endif %}
       </div>
@@ -92,16 +88,16 @@
           <label for="unpublished-filter" style="margin-bottom: 1em;margin-top: 0;">
             <input type="checkbox" id="unpublished-filter" name="unpublished-filter"
                 {% if unpublished_filter %}checked{% endif %} />
-            Show unpublished
+            显示尚未发布的游戏
           </label>
           <label for="search-installers" style="margin-bottom: 1em;margin-top: 0;">
             <input type="checkbox" id="search-installers" name="search-installers"
                 {% if search_installers %}checked{% endif %} />
-            Search in installers
-          </label>
-          <input type="button" value="Apply filter" class="btn btn-default no-border"
+            在安装脚本中搜索
+          </label><br>
+          <input type="button" value="筛选" class="btn btn-default no-border"
                  onclick="applyLibraryFilter();">
-          <input type="button" value="Clear filter" class="btn btn-default no-border"
+          <input type="button" value="清除" class="btn btn-default no-border"
                  style="margin-left: 10px;"
                  onclick="clearLibraryFilter();">
         </form>

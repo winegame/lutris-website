@@ -1,23 +1,22 @@
 {% extends "base.html" %}
-{% block title %}Game submitted - Lutris{% endblock %}
+{% block title %}游戏已提交 - Wine游戏助手{% endblock %}
 
 {% block content %}
 <div class="row">
     <div class="col-sm-3"></div>
     <div class="message-view col-sm-6">
     <p>
-    Game submitted, thank you!
+    游戏已提交，谢谢你的贡献！
     </p>
     <p>
-    We will review it as soon as possible. You will receive a
-    notification by e-mail when your game is ready for publication.
+    我们会尽快审核并发布你添加的游戏，审核通过后，你会收到邮件提醒。
     </p>
     <p>
-      All your submissions are listed on your
-      <a href="{% url "user_account" user.username %}">account</a> page.
-      You can preview this game there and submit an installer right away.
+      你提交的所有游戏都会在你的
+      <a href="{% url "user_account" user.username %}">个人资料</a>页面列出，
+      你可以在此预览该游戏，或者提交游戏的安装脚本，不需要等待审核通过。
     </p>
-    <a href="{% url "game_list" %}">Back to the games list</a>
+    <a href="{% url "game_list" %}">返回游戏列表</a>
   </div>
   <div class="col-sm-3"></div>
 </div>

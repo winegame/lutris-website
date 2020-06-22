@@ -1,36 +1,36 @@
 {% extends "base.html" %}
-{% block title %}My Library - Lutris{% endblock %}
+{% block title %}我的游戏库 - Wine游戏助手{% endblock %}
 {% block extra_head %}
 {{ filter_form.media.css }}
 {% endblock %}
 {% block content %}
 
 <!-- HEADER -->
-<h1>My Library <small>{{ paginator.count }} games</small>
+<h1>我的游戏库 <small>{{ paginator.count }} 个游戏</small>
   <span style="float: right;font-size: initial;margin-right: 1em;">
-      Order by
+      排序
       <select id="order_by" style="color:black;"
               data-filter="{{ filter_string }}"
               onchange="changeLibraryOrderBy();">
-        <option value="name" {% if order_by == 'name' %} selected {% endif %}>Name &uarr;</option>
-        <option value="-name" {% if order_by == '-name' %} selected {% endif %}>Name &darr;</option>
-        <option value="year" {% if order_by == 'year' %} selected {% endif %}>Year &uarr;</option>
-        <option value="-year" {% if order_by == '-year' %} selected {% endif %}>Year &darr;</option>
-        <option value="popularity" {% if order_by == 'popularity' %} selected {% endif %}>Popularity &uarr;</option>
-        <option value="-popularity" {% if order_by == '-popularity' %} selected {% endif %}>Popularity &darr;</option>
-        <option value="created" {% if order_by == 'created' %} selected {% endif %}>Created &uarr;</option>
-        <option value="-created" {% if order_by == '-created' %} selected {% endif %}>Created &darr;</option>
-        <option value="updated" {% if order_by == 'updated' %} selected {% endif %}>Updated &uarr;</option>
-        <option value="-updated" {% if order_by == '-updated' %} selected {% endif %}>Updated &darr;</option>
+        <option value="name" {% if order_by == 'name' %} selected {% endif %}>名称 &uarr;</option>
+        <option value="-name" {% if order_by == '-name' %} selected {% endif %}>名称 &darr;</option>
+        <option value="year" {% if order_by == 'year' %} selected {% endif %}>年份 &uarr;</option>
+        <option value="-year" {% if order_by == '-year' %} selected {% endif %}>年份 &darr;</option>
+        <option value="popularity" {% if order_by == 'popularity' %} selected {% endif %}>热度 &uarr;</option>
+        <option value="-popularity" {% if order_by == '-popularity' %} selected {% endif %}>热度 &darr;</option>
+        <option value="created" {% if order_by == 'created' %} selected {% endif %}>创建日期 &uarr;</option>
+        <option value="-created" {% if order_by == '-created' %} selected {% endif %}>创建日期 &darr;</option>
+        <option value="updated" {% if order_by == 'updated' %} selected {% endif %}>更新日期 &uarr;</option>
+        <option value="-updated" {% if order_by == '-updated' %} selected {% endif %}>更新日期 &darr;</option>
       </select>
   </span>
 </h1>
 {% if is_paginated %}
   <div class="row">
     <div class="col-md-12">
-      <span style="line-height: 33px;">Games {{ page_obj.start_index }} - {{ page_obj.end_index }} of {{ paginator.count }}</span>
+      <span style="line-height: 33px;">第 {{ page_obj.start_index }} - {{ page_obj.end_index }} 个游戏，共 {{ paginator.count }} 个</span>
       <span style="float: right;">
-          Show
+          每页
           <select id="paginate_by" style="color:black;"
                   data-filter="{{ filter_string }}"
                   onchange="changeLibraryPaginateCount();">
@@ -38,7 +38,7 @@
             <option value="50" {% if paginate_by == '50' %} selected {% endif %}>50</option>
             <option value="100" {% if paginate_by == '100' %} selected {% endif %}>100</option>
           </select>
-          per page
+          条
       </span>
     </div>
   </div>
@@ -58,9 +58,9 @@
       <div class="panel-body" style="background-color:#444;">
         <form action="{% url 'library_show' username=user.username %}" method="get" id="library_filter_form">
           {{ filter_form.as_p }}
-          <input type="button" value="Apply filter" class="btn btn-default no-border"
+          <input type="button" value="筛选" class="btn btn-default no-border"
                  onclick="applyLibraryFilter();">
-          <input type="button" value="Clear filter" class="btn btn-default no-border"
+          <input type="button" value="清除" class="btn btn-default no-border"
                  style="margin-left: 10px;"
                  onclick="clearLibraryFilter();">
         </form>

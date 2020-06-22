@@ -19,30 +19,30 @@ class RegistrationForm(forms.ModelForm):
     """
 
     error_messages = {
-        "duplicate_username": "A user with that username already exists.",
-        "password_mismatch": "The two password fields didn't match.",
+        "duplicate_username": "用户名已存在，请换一个",
+        "password_mismatch": "两次密码不一致，请确认是否输错",
     }
     username = forms.RegexField(
-        label="Username",
+        label="用户名",
         max_length=30,
         regex=r"^[\w.@+-]+$",
-        help_text=("30 characters max."),
+        help_text=("最长30个字，可包含汉字、字母、数字"),
         error_messages={
             "invalid": (
-                "This value may contain only letters, numbers and "
-                "@/./+/-/_ characters."
+                "用户名只能包含汉字、字母、数字，以及以下符号："
+                "@ . + - _"
             )
         },
     )
-    email = forms.EmailField(label="Email address")
+    email = forms.EmailField(label="邮箱")
     password1 = forms.CharField(
-        label="Password", widget=forms.PasswordInput, max_length=64
+        label="密码", widget=forms.PasswordInput, max_length=64
     )
     password2 = forms.CharField(
-        label="Password confirmation",
+        label="重复密码",
         widget=forms.PasswordInput,
         max_length=64,
-        help_text="Enter the same password as above, for verification.",
+        help_text="请再次输入上面输过的密码，以确保你没有输错",
     )
 
     class Meta:
@@ -54,7 +54,7 @@ class RegistrationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
         self.helper = get_bootstrap_helper(
-            ["username", "email", "password1", "password2"], "register", "Register"
+            ["username", "email", "password1", "password2"], "register", "注册"
         )
 
     def clean_username(self):
@@ -93,7 +93,7 @@ class LoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
         self.helper = get_bootstrap_helper(
-            ["username", "password"], "signin", "Sign in"
+            ["username", "password"], "signin", "登录"
         )
 
 
@@ -107,7 +107,7 @@ class ProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
-        self.helper = get_bootstrap_helper(list(self.Meta.fields), "save", "Save")
+        self.helper = get_bootstrap_helper(list(self.Meta.fields), "save", "保存")
 
     def save(self, commit=True):
         if "email" in self.changed_data:
@@ -118,12 +118,12 @@ class ProfileForm(forms.ModelForm):
 class ProfileDeleteForm(forms.Form):
     """Form to ask confirmation for account deletion"""
     confirm_delete = forms.BooleanField(
-        label="Yes, I confirm I want to delete my account"
+        label="我确定一定以及肯定要删除我的帐户（请勾选）"
     )
 
     def clean_confirm_delete(self):
         """Only delete if the user has checked the corresponding checkbox"""
         confirm_delete = self.cleaned_data["confirm_delete"]
         if not confirm_delete:
-            raise forms.ValidationError("You must confirm to delete your account")
+            raise forms.ValidationError("你没有确认，帐户未删除")
         return confirm_delete

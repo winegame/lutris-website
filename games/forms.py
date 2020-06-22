@@ -388,7 +388,7 @@ class LibraryFilterForm(forms.Form):
         widget=forms.TextInput(attrs={"style": "width: 100%;",
                                       "class": "select2-lookalike"}),
         required=False,
-        label="Search"
+        label="搜索"
     )
     platforms = forms.MultipleChoiceField(
         widget=Select2MultipleWidget(

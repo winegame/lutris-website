@@ -2,18 +2,18 @@
 {% load crispy_forms_tags %}
 
 
-{% block title %}Edit profile - Lutris{% endblock %}
+{% block title %}修改个人资料 - Wine游戏助手{% endblock %}
 
 
 {% block content %}
 <div class="form-view">
-  <h1>Account details</h1>
+  <h1>帐户详情</h1>
   {% crispy form %}
 </div>
 <div class="form-view">
-  <a href="{% url 'password_change' %}" class="btn btn-sm">Modify my password</a>
+  <a href="{% url 'password_change' %}" class="btn btn-sm">修改密码</a>
 </div>
 <div class='form-view'>
-  <a href="{% url 'profile_delete' username=user.username %}" class="btn btn-danger">Delete my account</a>
+  <a href="{% url 'profile_delete' username=user.username %}" class="btn btn-danger">删除帐户</a>
 </div>
 {% endblock %}

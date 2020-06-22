@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block title %}Upload a screenshot - Lutris{% endblock %}
+{% block title %}上传游戏截图 - Wine游戏助手{% endblock %}
 
 {% block content %}
 <div class="form-view">
-  <h2>Upload a screenshot</h2>
-  <p>Although regular screenshots are accepted we prefer you submit your own in-game screenshots.</p>
+  <h2>上传游戏截图</h2>
+  <p>建议上传通过游戏自带方法截取的屏幕截图。如果采用其他方法截图，请不要包含除游戏之外的其他部分，比如任务栏等。</p>
   {% crispy form %}
 </div>
 {% endblock %}

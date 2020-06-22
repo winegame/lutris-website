@@ -175,13 +175,13 @@ class Game(models.Model):
     """Game model"""
 
     GAME_FLAGS = (
-        ("fully_libre", "Fully libre"),
-        ("open_engine", "Open engine only"),
-        ("free", "Free"),
-        ("freetoplay", "Free-to-play"),
-        ("pwyw", "Pay what you want"),
-        ("demo", "Has a demo"),
-        ("protected", "Installer modification is restricted"),
+        ("fully_libre", "开放源代码"),
+        ("open_engine", "使用开源引擎"),
+        ("free", "免费"),
+        ("freetoplay", "免费开玩"),
+        ("pwyw", "自愿支付（PWYW）"),
+        ("demo", "包含演示（Demo）"),
+        ("protected", "包含反外挂措施"),
     )
 
     # These model fields are editable by the user

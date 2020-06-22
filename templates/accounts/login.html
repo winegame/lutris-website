@@ -2,16 +2,16 @@
 {% load crispy_forms_tags %}
 
 
-{% block title %}Login - Lutris{% endblock %}
+{% block title %}登陆 - Wine游戏助手{% endblock %}
 
 
 {% block content %}
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="form-view col-sm-6">
-    <h1>Sign in</h1>
+    <h1>用户登录</h1>
     {% crispy form %}
-    <a href="{% url 'password_reset' %}">Forgot your password?</a>
+    <a href="{% url 'password_reset' %}">忘记密码？</a>
   </div>
   <div class="col-sm-3"></div>
 </div>

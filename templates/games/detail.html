@@ -11,15 +11,15 @@
 <meta property='og:image' content="{{img.url}}" />
 {% endthumbnail %}
 <meta property='og:title' content="{{ game.name }}" />
-<meta property='og:site_name' content='Lutris' />
-<meta name="title" content="{{ game.name }} - Lutris" />
-<meta name="description" content="{{ game.name }} - Lutris" />
-<meta property="og:description" content="{{ game.name }} - Lutris" />
+<meta property='og:site_name' content='Wine游戏助手' />
+<meta name="title" content="{{ game.name }} - Wine游戏助手" />
+<meta name="description" content="{{ game.name }} - Wine游戏助手" />
+<meta property="og:description" content="{{ game.name }} - Wine游戏助手" />
 <link rel="stylesheet" href="{% static 'installer-issues.css' %}" type="text/css">
 {% endblock extra_head %}
 
 
-{% block title %}{{ game.name }} - Lutris{% endblock %}
+{% block title %}{{ game.name }} - Wine游戏助手{% endblock %}
 
 {% block content %}
 <div class="page">
@@ -30,7 +30,7 @@
       {% endif %}
       <span class="ellipse-text">{{ game.name }}</span>
         <div class="buttons">
-          <a class="btn" href="{% url 'game-edit' game.slug %}">Suggest changes</a>
+          <a class="btn" href="{% url 'game-edit' game.slug %}">提出修改建议</a>
           {% if user.is_staff %}
             {% if can_edit and pending_change_subm_count > 0 %}
               <a class="btn" href="{% url 'admin-change-submissions' game.id %}">
@@ -39,10 +39,10 @@
               </a>
             {% endif %}
             {% if can_publish and not game.is_public %}
-              <a class="btn" href="{% url 'game-publish' game_id=game.id %}">Publish</a>
+              <a class="btn" href="{% url 'game-publish' game_id=game.id %}">发布</a>
             {% endif %}
             {% if can_edit %}
-              <a class="btn" href="{% url 'admin:games_game_change' game.id %}">Edit</a>
+              <a class="btn" href="{% url 'admin:games_game_change' game.id %}">编辑</a>
             {% endif %}
           {% endif %}
         </div>
@@ -58,7 +58,7 @@
         <ul>
           {% if game.genres.count %}
           <li>
-            <span class="info-label">Genre: </span>
+            <span class="info-label">类型: </span>
             {% for genre in game.genres.all %}
               {{ genre }}{% if not forloop.last %}, {% endif %}
             {% endfor %}
@@ -66,7 +66,7 @@
           {% endif %}
           {% if game.platforms.count %}
           <li>
-            <span class="info-label">Platform: </span>
+            <span class="info-label">平台: </span>
             {% for platform in game.platforms.all %}
               {{ platform }}{% if not forloop.last %}, {% endif %}
             {% endfor %}
@@ -74,44 +74,44 @@
           {% endif %}
           {% if game.developer %}
           <li>
-            <span class="info-label">Developer: </span>
+            <span class="info-label">开发者: </span>
             <a href="{{ game.developer.get_absolute_url }}">{{ game.developer }}</a>
           </li>
           {% endif %}
           {% if game.publisher %}
           <li>
-            <span class="info-label">Publisher: </span>
+            <span class="info-label">发布者: </span>
             <a href="{{ game.publisher.get_absolute_url }}">{{ game.publisher }}</a>
           </li>
           {% endif %}
           {% if game.year %}
           <li>
-            <span class="info-label">Release year: </span>
+            <span class="info-label">发行年份: </span>
             {{ game.year }}
           </li>
           {% endif %}
           {% if game.website %}
           <li class="ellipse-text">
-              <span class="info-label">Website: </span>
+              <span class="info-label">网站: </span>
               <a href='{{ game.website_url }}'>{{ game.website_url_hr }}</a>
           </li>
           {% endif %}
         </ul>
         <div class="centered">
 
-          <p>{{ game.user_count }} users have this game</p>
+          <p>已被 {{ game.user_count }} 个用户添加到游戏库</p>
           <p>
             {% if not in_library %}
-            <a href="{% url "add_to_library" slug=game.slug %}" class="btn">Add to my library</a>
+            <a href="{% url "add_to_library" slug=game.slug %}" class="btn">添加到我的游戏库</a>
             {% else %}
             <a href="{% url "remove_from_library" slug=game.slug %}" class="btn in-library">
-              <span>In my library</span>
+              <span>已在我的游戏库</span>
             </a>
             {% endif %}
           </p>
           <p>
             {% if game.steamid or game.gogslug or game.humblestoreid %}
-            <span>Get it from:</span><br/>
+            <span>购买游戏:</span><br/>
             {% endif %}
             {% if game.steamid %}
             <a href="http://store.steampowered.com/app/{{ game.steamid }}"
@@ -136,7 +136,7 @@
           </p>
           {% if game.links.count %}
             <p>
-              <span>See also:</span><br/>
+              <span>相关链接:</span><br/>
               {% for link in game.links.all %}
               <a href="{{link.url}}" class='external-link'>
                 <img src="{{STATIC_URL}}images/icons/{{link.website}}.png" alt="{{link.website}}"/>
@@ -180,7 +180,7 @@
     <div class="col-sm-9 col-sm-pull-3">
       {% include "includes/screenshots_slider.html" %}
       <div class="screenshots-bar actions-bar">
-        <a href='{% url 'screenshot_add' game.slug %}'>Submit screenshot</a>
+        <a href='{% url 'screenshot_add' game.slug %}'>上传游戏截图</a>
       </div>
       <div class="installer-list">
         {% if installers %}
@@ -206,9 +206,9 @@
         {% endif %}
         <div class="installer-actions actions-bar">
           {% if unpublished_installers %}
-            <a href="#" onclick="toggleUnpublishedInstallers(event)">Show unpublished installers</a>
+            <a href="#" onclick="toggleUnpublishedInstallers(event)">显示尚未发布的安装脚本</a>
           {% endif %}
-          <a href="{% url "new_installer" slug=game.slug %}">Write a new installer</a>
+          <a href="{% url "new_installer" slug=game.slug %}">编写新安装脚本</a>
         </div>
       </div>
       <article>
@@ -224,25 +224,23 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Report a problem or an outdated installer</h4>
+          <h4 class="modal-title">反馈安装脚本或游戏运行问题</h4>
         </div>
         <div class="modal-body">
           <p>
-            Report any problem you might encounter with the installer. You can
-            also report here outdated installers. If you have problems
-            installing or running the game, don't forget to specify your
-            distribution, (+ version and architecture), your graphics chipset
-            model and the driver used.
+            在此反馈安装过程中遇到的任何问题，比如安装脚本已过时。
+            也可以反馈游戏运行过程中遇到的问题，比如打不开、游戏崩溃、功能异常、被误封等。
+            反馈游戏问题时，请附带你使用的显卡型号和驱动程序版本。
           </p>
           <p>
-            <label for="issue-content">Describe your issue:</label>
+            <label for="issue-content">反馈内容:</label>
           </p>
           <textarea id="issue-content" class="issue-content"></textarea>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="issue-submit">Submit</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="button" class="btn btn-primary" id="issue-submit">提交</button>
         </div>
       </div>
     </div>

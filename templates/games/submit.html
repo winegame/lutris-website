@@ -2,7 +2,7 @@
 {% load static from staticfiles %}
 {% load crispy_forms_tags %}
 {% block title %}
-{% if not game %} Submit a game {% else %} Suggest changes {% endif %}- Lutris
+{% if not game %} 提交游戏 {% else %} 提出修改建议 {% endif %}- Wine游戏助手
 {% endblock %}
 {% block extra_head %}
 {{ form.media.css }}
@@ -47,26 +47,26 @@
     <div class="form-view">
       <h1>
         {% if not game %}
-          Submit a game
+          提交游戏
         {% else %}
-          Suggest changes to '{{ game.name }}'
+          提出对 '{{ game.name }}' 的修改建议
         {% endif %}
       </h1>
       <p>
-        This page <strong>should not</strong> be used for issues pertaining to
-        installers or other similar problems.<br /> Visit our <a href="https://forums.lutris.net">forums</a>
-        or our <a href="https://discord.gg/Pnt5CuY">Discord</a> server for assistance.<br /><br />
-        Please be as accurate as possible with the information you provide.
-        Wikipedia or <a href="https://www.mobygames.com/search/quick">Mobygames</a>
-        are generally reliable sources. If you know more accurate ones, let us
-        know! Thanks for your efforts!<br /><br />
+        <strong>不要在此页面提交安装游戏或运行游戏时遇到的问题</strong>，如要反馈，请点击安装按钮旁边的下拉箭头，选择“报告问题”。<br />
+        或者你也可以前往<a href="https://hu60.cn/q.php/bbs.forum.170.html">论坛</a>
+        或<a href="http://127.0.0.1:8000/about/">QQ、微信群</a>寻求帮助。<br /><br />
+
+        请提供尽可能准确的信息，如果你不确定，可以前往<a href="https://baike.baidu.com/">百度百科</a>或<a href="https://www.3dmgame.com/">3DM游戏网</a>等网站查询。
+        当然如果您知道比其他网站更准确的信息，也请填写在下面，我们会非常感谢你！<br /><br />
       </p>
       {% if not game %}
       <p>
-        <img src="{% static "images/nosteam.png" %}" alt="Don't submit Steam games" style="float: left; margin-right: 12px;"/>
-        <strong>Do not submit Steam games.</strong> We probably already have the game in our database
-        (check for unpublished games in the advanced search options). If the game really isn't available,
-        sync your Steam library from your Lutris account, this will add missing games to our database.
+        <img src="{% static "images/nosteam.png" %}" alt="不要提交Steam游戏" style="float: left; margin-right: 12px;"/>
+        注意，<strong>不要手动提交Steam游戏</strong>。
+        我们的数据库中可能已包含该游戏， 你可以勾选“显示尚未发布的游戏”再搜索看看。
+        如果游戏确实不在库中，你可以前往个人资料页面绑定并同步你的Steam游戏库，
+        这样你拥有的Steam游戏就会自动添加到我们的数据库中。
       </p>
       {% endif %}
       {% crispy form %}

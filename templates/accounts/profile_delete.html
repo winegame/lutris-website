@@ -4,10 +4,9 @@
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="form-view col-sm-6">
-    <h1>Delete my account</h1>
+    <h1>删除我的帐户</h1>
     <p class='warning'>
-      This action is irreversible, you will lose the list of games in your
-      Lutris library and the ability to log in.
+      删除操作不可逆，你存储在网站上的游戏列表将被永久删除，帐户也将无法再登录。
     </p>
     <form class="simple-form" action="" method="post">
       {% csrf_token %}
@@ -15,7 +14,7 @@
         {{ form.as_p }}
       </div>
       <p>
-        <input class="btn btn-sm btn-danger" type="submit" value="DELETE MY ACCOUNT">
+        <input class="btn btn-sm btn-danger" type="submit" value="删除我的帐户吧">
       </p>
     </form>
   </div>

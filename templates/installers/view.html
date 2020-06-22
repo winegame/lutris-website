@@ -8,10 +8,10 @@
 <meta property='og:image' content="{{img.url}}" />
 {% endthumbnail %}
 <meta property='og:title' content="{{ installer.game.name }} ({{ installer.version}})" />
-<meta property='og:site_name' content='Lutris' />
-<meta name="title" content="{{ installer.game.name }} ({{ installer.version }}) - Lutris" />
-<meta name="description" content="{{ installer.game.name }} ({{ installer.version }}) - Lutris" />
-<meta property="og:description" content="{{ installer.game.name }} ({{ installer.version }}) - Lutris" />
+<meta property='og:site_name' content='Wine游戏助手' />
+<meta name="title" content="{{ installer.game.name }} ({{ installer.version }}) - Wine游戏助手" />
+<meta name="description" content="{{ installer.game.name }} ({{ installer.version }}) - Wine游戏助手" />
+<meta property="og:description" content="{{ installer.game.name }} ({{ installer.version }}) - Wine游戏助手" />
 {% endblock extra_head %}
 
 {% block content %}
@@ -19,8 +19,8 @@
 <div class='row'>
   <div class="col-lg-10 col-lg-offset-1">
     <p>
-      This script is for reference only and can't be directly used to install the game
-      in the Lutris client. To install the game, <a href="{% url 'api_game_installer_list' slug=installer.slug %}?format=json">download</a> the full script.
+      该脚本仅供参考，不能直接用来在Wine游戏助手中安装游戏。
+      要安装游戏，请<a href="{% url 'api_game_installer_list' slug=installer.slug %}?format=json">下载完整脚本</a>。
     </p>
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
@@ -38,7 +38,7 @@
         <pre>{{installer.as_cleaned_json}}</pre>
       </div>
     </div>
-    <a class="btn" href="{% url "game_detail" slug=installer.game.slug %}">Back to game</a>
+    <a class="btn" href="{% url "game_detail" slug=installer.game.slug %}">返回游戏</a>
   </div>
 </div>
 {% endblock content %}

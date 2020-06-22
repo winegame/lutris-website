@@ -1,17 +1,17 @@
 {% extends "base.html" %}
-{% block title %}Changes submitted - Lutris{% endblock %}
+{% block title %}更改已提交 - Wine游戏助手{% endblock %}
 
 {% block content %}
 <div class="row">
   <div class="col-sm-3"></div>
   <div class="message-view col-sm-6">
     <p>
-        Changes submitted, thank you!
+        更改已提交，谢谢你的贡献！
       </p>
       <p>
-        We will review it as soon as possible.
+        我们会尽快审核并发布你的更改。
       </p>
-      <a href="{% url "game_detail" slug=game.slug %}">Back to {{game}}</a>
+      <a href="{% url "game_detail" slug=game.slug %}">返回 {{game}} 详情页</a>
   </div>
   <div class="col-sm-3"></div>
 </div>
