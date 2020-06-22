@@ -12,8 +12,8 @@
       "last_login": "2012-05-17T18:30:19.044Z",
       "groups": [],
       "user_permissions": [],
-      "password": "sha1$de11c$08e4893709dfb28b92d99ade7fd4c335b591ed32",
-      "email": "admin@lutris.net",
+      "password": "pbkdf2_sha256$150000$BOGNidZUiwBm$hykZQrb9XaRDewcYjKwEfwuD3UDTWjLQbwSVrHHhg+A=",
+      "email": "admin@winegame.net",
       "date_joined": "2012-05-17T18:30:19.044Z"
     }
   }
