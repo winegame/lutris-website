@@ -81,16 +81,25 @@ class GameForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(GameForm, self).__init__(*args, **kwargs)
-        self.fields["name"].label = "Title"
-        self.fields["year"].label = "Release year"
-        self.fields["website"].help_text = (
-            "The official website (full address). If it doesn't exist, leave blank."
+        self.fields["name"].label = "游戏名称"
+        self.fields["name"].help_text = (
+            "如果游戏有英文名称，请添加“|”和英文名称，如“魔兽世界 | World of Warcraft”。"
         )
-        self.fields["genres"].help_text = ""
+        self.fields["year"].label = "发行年份"
+        self.fields["developer"].label = "开发商"
+        self.fields["publisher"].label = "发行商"
+        self.fields["website"].label = "官方网站"
+        self.fields["website"].help_text = (
+            "如果官网是游戏平台，请指向具体游戏页面。如果不存在，请留空。"
+        )
+        self.fields["platforms"].label = "平台"
+        self.fields["genres"].label = "类型"
+        self.fields["description"].label = "简介"
         self.fields["description"].help_text = (
-            "Copy the official description of the game if you can find "
-            "it. Don't write your own. For old games, check Mobygame's Ad "
-            "Blurbs, look for the English back cover text."
+            "如果可以找到，请复制游戏的官方描述，不要自己写。"
+            "如果在官网找不到描述，或者描述不是中文，"
+            "可以去<a href='https://baike.baidu.com/'>百度百科</a>或者"
+            "<a href='https://www.3dmgame.com/'>3DM游戏网</a>找。"
         )
 
         self.fields["title_logo"] = CroppieField(
@@ -100,11 +109,11 @@ class GameForm(forms.ModelForm):
                 "showZoomer": True,
             }
         )
-        self.fields["title_logo"].label = "Upload an image"
+        self.fields["title_logo"].label = "上传封面图像"
         self.fields["title_logo"].help_text = (
-            "The banner should include the game's title. "
-            "Please make sure that your banner doesn't rely on "
-            "transparency as those won't be reflected in the final image"
+            "封面图像应该包含游戏名称。"
+            "请确保图像不含透明部分，否则显示出来可能会很奇怪。"
+            "如果图像是透明png，可以转存为jpg来消除透明部分。"
         )
 
         self.helper = FormHelper()
@@ -122,7 +131,7 @@ class GameForm(forms.ModelForm):
                 "description",
                 Field("title_logo", template="includes/upload_button.html"),
             ),
-            ButtonHolder(Submit("submit", "Submit")),
+            ButtonHolder(Submit("submit", "提交")),
         )
 
     def rename_uploaded_file(self, file_field, cleaned_data, slug):
@@ -148,13 +157,12 @@ class GameForm(forms.ModelForm):
         else:
             if game.is_public:
                 msg = (
-                    "This game is <a href='/games/%s'>already in our database</a>."
+                    "该游戏已在我们的数据库中，<a href='/games/%s'>点击查看</a>。"
                 ) % slug
             else:
                 msg = (
-                    "This game has <a href='/games/%s'>already been "
-                    "submitted</a>, you're welcome to nag us so we "
-                    "publish it faster."
+                    "该游戏已在我们的数据库中但尚未发布（<a href='/games/%s'>点击查看</a>）。"
+                    "欢迎与我们联系，以便我们尽快发布。"
                 ) % slug
             raise forms.ValidationError(mark_safe(msg))
 
@@ -164,9 +172,10 @@ class GameEditForm(forms.ModelForm):
 
     reason = forms.CharField(
         required=False,
+        label="修改原因",
         help_text=(
-            "Please describe briefly, why this change is necessary."
-            "Please also add sources if applicable."
+            "请简要描述为什么要进行这些修改。"
+            "如果可以，请添加信息来源（比如官网、百科、3DM链接等）。"
         ),
     )
 
@@ -200,8 +209,27 @@ class GameEditForm(forms.ModelForm):
 
     def __init__(self, payload, *args, **kwargs):
         super(GameEditForm, self).__init__(payload, *args, **kwargs)
-        self.fields["name"].label = "Title"
-        self.fields["year"].label = "Release year"
+        self.fields["name"].label = "游戏名称"
+        self.fields["name"].help_text = (
+            "如果游戏有英文名称，请添加“|”和英文名称，如“魔兽世界 | World of Warcraft”。"
+        )
+        self.fields["year"].label = "发行年份"
+        self.fields["developer"].label = "开发商"
+        self.fields["publisher"].label = "发行商"
+        self.fields["website"].label = "官方网站"
+        self.fields["website"].help_text = (
+            "如果官网是游戏平台，请指向具体游戏页面。如果不存在，请留空。"
+        )
+        self.fields["platforms"].label = "平台"
+        self.fields["genres"].label = "类型"
+        self.fields["description"].label = "简介"
+        self.fields["description"].help_text = (
+            "如果可以找到，请复制游戏的官方描述，不要自己写。"
+            "如果在官网找不到描述，或者描述不是中文，"
+            "可以去<a href='https://baike.baidu.com/'>百度百科</a>或者"
+            "<a href='https://www.3dmgame.com/'>3DM游戏网</a>找。"
+        )
+
         self.fields["title_logo"] = CroppieField(
             options={
                 "viewport": {"width": 875, "height": 345},
@@ -210,7 +238,12 @@ class GameEditForm(forms.ModelForm):
                 "url": payload["title_logo"].url if payload.get("title_logo") else "",
             }
         )
-        self.fields["title_logo"].label = "Upload an image"
+        self.fields["title_logo"].label = "上传封面图像"
+        self.fields["title_logo"].help_text = (
+            "封面图像应该包含游戏名称。"
+            "请确保图像不含透明部分，否则显示出来可能会很奇怪。"
+            "如果图像是透明png，可以转存为jpg来消除透明部分。"
+        )
         self.fields["title_logo"].required = False
 
         self.helper = FormHelper()
@@ -229,7 +262,7 @@ class GameEditForm(forms.ModelForm):
                 Field("title_logo", template="includes/upload_button.html"),
                 "reason",
             ),
-            ButtonHolder(Submit("submit", "Submit")),
+            ButtonHolder(Submit("submit", "提交")),
         )
 
     def clean(self):
@@ -239,7 +272,7 @@ class GameEditForm(forms.ModelForm):
 
         # Raise error if nothing actually changed
         if not self.has_changed():
-            raise forms.ValidationError("You have not changed anything")
+            raise forms.ValidationError("你没有进行任何修改")
 
         return cleaned_data
 
@@ -253,7 +286,7 @@ class ScreenshotForm(forms.ModelForm):
         self.game = models.Game.objects.get(pk=kwargs.pop("game_id"))
         super(ScreenshotForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit("submit", "Submit"))
+        self.helper.add_input(Submit("submit", "提交"))
 
     def save(self, commit=True):
         self.instance.game = self.game
@@ -279,26 +312,23 @@ class InstallerForm(forms.ModelForm):
         }
         help_texts = {
             "version": (
-                "Short version name describing the release of the game "
-                "targeted by the installer. It can be the release name (e.g. "
-                "GOTY, Gold...) or format (CD...) or platform (Amiga "
-                "500...), or the vendor version (e.g. GOG, Steam...) or "
-                "the actual software version of the game... Whatever makes "
-                "the most sense."
+                "简短版本名称，描述安装程序针对的游戏版本。可以是发行名称（例如“GOTY”、“Gold”），格式（例如“CD”），运行平台（例如“x86”、“x64”、“arm64”），也可以是发行平台（例如“Steam”、“UPlay”）或游戏的实际版本号。"
             ),
             "description": (
-                "Additional details about the installer. "
-                "Do NOT put a description for the game, it will be deleted"
+                "安装脚本的简单介绍。"
+                "注意：不要添加游戏简介，只介绍你的安装脚本就好。"
             ),
             "notes": (
-                "Describe any known issues or manual tasks required "
-                "to run the game properly."
+                "描述安装游戏时需要手动进行的操作，或运行游戏时的任何已知问题。"
             ),
         }
 
     def __init__(self, *args, **kwargs):
         super(InstallerForm, self).__init__(*args, **kwargs)
-        self.fields["notes"].label = "Technical notes"
+        self.fields["runner"].label = "运行环境"
+        self.fields["version"].label = "版本"
+        self.fields["description"].label = "安装脚本简介"
+        self.fields["notes"].label = "技术性说明"
 
     def clean_content(self):
         """Verify that the content field is valid yaml"""
@@ -307,7 +337,7 @@ class InstallerForm(forms.ModelForm):
             yaml_data = load_yaml(yaml_data)
         except yaml.error.MarkedYAMLError as ex:
             raise forms.ValidationError(
-                "Invalid YAML, problem at line %s, %s"
+                "YAML错误，位置: 第 %s 行，错误: %s"
                 % (ex.problem_mark.line, ex.problem)
             )
         return dump_yaml(yaml_data)
@@ -315,12 +345,14 @@ class InstallerForm(forms.ModelForm):
     def clean_version(self):
         version = self.cleaned_data["version"]
         if not version:
-            raise forms.ValidationError("This field is mandatory")
-        if version.lower() == "change me":
-            raise forms.ValidationError('When we say "change me", we mean it.')
-        if version.lower().endswith("version"):
+            raise forms.ValidationError("此字段是必填字段")
+        if version.lower() == "change me" or version.lower() == "请修改该字段":
+            raise forms.ValidationError('请修改该字段')
+        if version.lower().endswith("version") or \
+           version.lower().endswith("版本") or \
+           version.lower().endswith("版"):
             raise forms.ValidationError(
-                "Don't put 'version' at the end of the 'version' field"
+                "不要把“version”、“版本”或“版”字放在版本字段的末尾"
             )
         version_exists = (
             models.Installer.objects.filter(game=self.instance.game, version=version)
@@ -329,7 +361,7 @@ class InstallerForm(forms.ModelForm):
         )
         if version_exists:
             raise forms.ValidationError(
-                "An installer with the same version name already exists"
+                "相同版本的安装脚本已存在，如需继续提交，请修改版本字段"
             )
         return version
 
@@ -341,7 +373,7 @@ class InstallerForm(forms.ModelForm):
                 self.errors["content"] = []
             for error in errors:
                 self.errors["content"].append(error)
-            raise forms.ValidationError("Invalid installer script")
+            raise forms.ValidationError("安装脚本错误")
         # Draft status depends on the submit button clicked
         self.cleaned_data["draft"] = "save" in self.data
         return self.cleaned_data
@@ -366,8 +398,9 @@ class InstallerEditForm(InstallerForm):
     reason = forms.CharField(
         widget=forms.Textarea(attrs={"class": "installer-textarea"}),
         required=False,
-        help_text="Please describe briefly, why this change is necessary or useful. "
-        "This will help us moderate the changes.",
+        label="修改原因",
+        help_text="请简要描述为什么要进行这些修改，"
+        "这有助于加快我们审核。",
     )
 
 
@@ -424,7 +457,7 @@ class LibraryFilterForm(forms.Form):
                    'data-minimum-input-length': 3}
         ),
         required=False,
-        label="开发者"
+        label="开发商"
     )
     years = forms.MultipleChoiceField(
         choices=[(i, i) for i in range(date.today().year, 1970, -1)],

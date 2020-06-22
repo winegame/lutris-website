@@ -29,12 +29,12 @@
           <a href="{% url "user_send_confirmation" %}">发送验证链接</a>
           <br/>
           <span class='warning-message'>
-            你的邮箱尚未验证，密码找回功能不可用。
+            你的邮箱尚未验证，网站功能将受限，密码找回功能不可用。
             如果收不到验证邮件，建议更换其他后缀的邮箱再试，或者<a href="{% url 'about' %}">联系我们</a>手动帮你验证。
           </span>
         {% else %}
           <span class='warning-message'>
-            你尚未设置邮箱，密码找回功能不可用。
+            你尚未设置邮箱，网站功能将受限，密码找回功能不可用。
           </span>
         {% endif %}
       {% endif %}

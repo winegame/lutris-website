@@ -33,13 +33,13 @@
       </span>
       {% if game.developer %}
         <span>
-        开发者: <a href="{% url 'games_by_company' company=game.developer.pk %}" class="filter-link">{{ game.developer }}</a>
+        开发商: <a href="{% url 'games_by_company' company=game.developer.pk %}" class="filter-link">{{ game.developer }}</a>
         </span>
       {% endif %}
 
       {% if game.publisher %}
       <span>
-        发布者: <a href="{% url 'games_by_company' company=game.publisher.pk %}" class="filter-link">{{ game.publisher }}</a>
+        发行商: <a href="{% url 'games_by_company' company=game.publisher.pk %}" class="filter-link">{{ game.publisher }}</a>
       </span>
       {% endif %}
       <br>
