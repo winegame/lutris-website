@@ -388,7 +388,7 @@ class LibraryFilterForm(forms.Form):
         widget=forms.TextInput(attrs={"style": "width: 100%;",
                                       "class": "select2-lookalike"}),
         required=False,
-        label="搜索"
+        label="游戏名称"
     )
     platforms = forms.MultipleChoiceField(
         widget=Select2MultipleWidget(
@@ -398,6 +398,7 @@ class LibraryFilterForm(forms.Form):
                    'data-minimum-input-length': 2}
         ),
         required=False,
+        label="平台"
     )
     genres = forms.ModelMultipleChoiceField(
         queryset=models.Genre.objects.all(),
@@ -410,6 +411,7 @@ class LibraryFilterForm(forms.Form):
                    'data-minimum-input-length': 3}
         ),
         required=False,
+        label="类型"
     )
     companies = forms.ModelMultipleChoiceField(
         queryset=models.Company.objects.all(),
@@ -421,19 +423,22 @@ class LibraryFilterForm(forms.Form):
                    'data-placeholder': '',
                    'data-minimum-input-length': 3}
         ),
-        required=False
+        required=False,
+        label="开发者"
     )
     years = forms.MultipleChoiceField(
         choices=[(i, i) for i in range(date.today().year, 1970, -1)],
         widget=Select2MultipleWidget(attrs={'data-width': '100%',
                                             'data-close-on-select': 'false',
                                             'data-placeholder': ''}),
-        required=False
+        required=False,
+        label="发行年份"
     )
     flags = forms.MultipleChoiceField(
         choices=models.Game.GAME_FLAGS,
         widget=BitFieldCheckboxSelectMultiple,
         required=False,
+        label="其他选项"
     )
 
     def __init__(self, *args, **kwargs):

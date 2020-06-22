@@ -3,11 +3,11 @@
 
 {% block title %}
   {% if new %}
-    Create new installer for {{ game }}
+    新增安装脚本 | {{ game }}
   {% else %}
-    Edit installer for {{ game }}
+    编辑安装脚本 | {{ game }}
   {% endif %}
-  | Lutris
+  | Wine游戏助手
 {% endblock %}
 
 {% block extra_head %}
@@ -15,12 +15,12 @@
 {% endblock %}
 
 {% block content %}
-<h1>{% if new %}New{% else %}Edit{% endif %} installer for {{ game }}</h1>
+<h1>{% if new %}新增{% else %}编辑{% endif %} 安装脚本 | {{ game }}</h1>
 <div class="row">
   <div class="col-sm-7">
     <div class="well">
     {% if versions %}
-      <p>Load a previous revision </p>
+      <p>加载之前的版本</p>
       <select class='django-select2' id='revision-select'>
         {% for version in versions %}
         <option value="{{version.id}}" {% if version.id == revision_id %}selected{% endif %}>{{version.revision.comment}}</option>
@@ -31,10 +31,10 @@
       {% csrf_token %}
       {{ form.as_p }}
       <div id='editor'></div>
-      <input type="submit" class="btn" name="save" value="Save draft">
-      <input type="submit" class="btn btn-primary" name="submit" value="Submit to moderation"/>
+      <input type="submit" class="btn" name="save" value="保存草稿">
+      <input type="submit" class="btn btn-primary" name="submit" value="提交审核"/>
       {% if installer.draft %}
-      <input type="submit" class="btn btn-danger" name="delete" value="Delete this draft">
+      <input type="submit" class="btn btn-danger" name="delete" value="删除草稿">
       {% endif %}
       {% if installer %}
       <a
@@ -45,16 +45,16 @@
         {% else %}
         href="lutris:{{installer.slug}}"
         {% endif %}
-      >Test this installer</a>
+      >测试该脚本</a>
       {% endif %}
-      <a class='btn' href="{{game.get_absolute_url}}">Cancel</a>
+      <a class='btn' href="{{game.get_absolute_url}}">取消</a>
     </form>
     </div>
   </div>
 
 </div>
 <div class="well docs fixed-panel">
-    <h1>Installer documentation</h1>
+    <h1>安装脚本文档</h1>
     {% include "docs/installers.html" %}
 </div>
 {% endblock %}

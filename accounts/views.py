@@ -63,8 +63,7 @@ def clear_auth_token(request):
     token.delete()
     messages.info(
         request,
-        "You authentication token has been cleared. "
-        "Please sign-in in Lutris again to generate a new one."
+        "身份验证令牌已重置，请重新登录。"
     )
     return redirect(
         reverse('user_account', kwargs={"username": request.user.username})

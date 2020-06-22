@@ -7,12 +7,12 @@
   <div class="message-box col-sm-6">
     <p>
     {% if confirmation_token.is_valid %}
-    Your email address is now confirmed.
+    邮箱验证成功
     {% else %}
-    The confirmation link has expired, please request another one.
+    邮箱验证链接已过期，请重发验证邮件
     {% endif %}
     </p>
-    <a href="{% url "profile" %}">Return to profile</a>
+    <a href="{% url "profile" %}">返回个人资料</a>
   </div>
   <div class="col-sm-3"></div>
 </div>

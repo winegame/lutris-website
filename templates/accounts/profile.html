@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{% static 'lightbox2/css/lightbox.min.css' %}">
 {% endblock stylesheets %}
 
-{% block title %}My account | Lutris{% endblock %}
+{% block title %}个人资料 | Wine游戏助手{% endblock %}
 
 
 {% block content %}
@@ -17,26 +17,24 @@
       <img src="{{ user.avatar_url }}"/>
     </div>
     <p class="profile-user">{{ user }}</p>
-    <span class="profile-info">Member since {{user.date_joined|date:"d M Y"}}</span>
+    <span class="profile-info">注册日期: {{user.date_joined|date:"Y-m-d"}}</span>
   </div>
   <div class="profile-content">
     <section>
-      <h4>Profile info</h4>
-      <strong>Email:</strong>
+      <h4>个人资料</h4>
+      <strong>邮箱:</strong>
       <span>{{user.email}}</span>
       {% if not user.email_confirmed %}
         {% if user.email %}
-          <a href="{% url "user_send_confirmation" %}">Send validation link</a>
+          <a href="{% url "user_send_confirmation" %}">发送验证链接</a>
           <br/>
-          <span class='warning-message'>Your email address has not been validated.
-            Some email providers such as Hotmail do not accept messages from
-            Lutris, if this is the case, please change your email address to
-            validate it.
+          <span class='warning-message'>
+            你的邮箱尚未验证，密码找回功能不可用。
+            如果收不到验证邮件，建议更换其他后缀的邮箱再试，或者<a href="{% url 'about' %}">联系我们</a>手动帮你验证。
           </span>
         {% else %}
           <span class='warning-message'>
-            You don't have an email set, your account will be limited and you
-            won't be able to use the forums.
+            你尚未设置邮箱，密码找回功能不可用。
           </span>
         {% endif %}
       {% endif %}
@@ -46,45 +44,44 @@
       <a href="{{user.website}}">{{user.website}}</a><br/>
       {% endif %}
       <br/>
-      <a href="{% url 'profile_edit' user.username %}" class="btn">Edit Profile</a>
+      <a href="{% url 'profile_edit' user.username %}" class="btn">修改个人资料或密码</a>
 
-      <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+      <a href="{% url 'logout' %}" class="btn btn-danger">退出登录</a>
       <p>
-        You can log out from every computer you have Lutris installed on by regenerating a new authentication token.
+        如果要在登录过Wine游戏助手的所有设备中退出，可以重置身份验证令牌。
         <a href="{% url 'clear_auth_token' %}"
            class="btn btn-danger"
-           onclick="return confirm('Are you sure you want to clear your existing token? You will have to log in again in Lutris.')"
-           >Clear token</a>
+           onclick="return confirm('确定重置身份验证令牌吗，你的所有已登陆设备都会自动退出，你之后需要重新登录。')"
+           >重置身份验证令牌</a>
       </p>
 
     </section>
     <section>
-      <h4>Game library</h4>
+      <h4>游戏库</h4>
       <p>
-        <a href="{% url 'library_show' username=user.username %}" class="btn">Show library</a>
+        <a href="{% url 'library_show' username=user.username %}" class="btn">显示游戏库</a>
       </p>
       <p>
-        You can automatically import the list of your Steam games and add them to your Lutris library.
+        您可以自动导入你的Steam游戏库到Wine游戏助手中。
       </p>
       <p class="warning-message">
-        Make sure to set <strong>both</strong> your Steam profile and the games
-        details set to public in your Steam account settings (available at <a href="https://steamcommunity.com/my/edit/settings">My Privacy Settings</a>).
+        请确保你的Steam“个人资料”和“游戏详情”<strong>均为“公开”</strong>，否则我们无法同步你的Steam游戏库。
+        你可以前往<a href="https://steamcommunity.com/my/edit/settings">Steam隐私设置</a>进行修改
         <a data-lightbox="steam-profile"
-          data-title="Check both checkboxes in your Steam profile"
-          href='{% static 'images/screenshots/steam-profile.png' %}'>See how</a>
+          data-title="请将图中两项均设为“Public”（公开）。如果你选择中文语言，则为“我的个人资料”和“游戏详情”。"
+          href='{% static 'images/screenshots/steam-profile.png' %}'>（显示如何修改）</a>。
       </p>
-      <a href="{% url 'steam_login' %}"><img src="{{ STATIC_URL }}images/sits_large_noborder.png" title="Sign in with Steam" alt="Sign in with Steam"/></a>
+      <a href="{% url 'steam_login' %}"><img src="{{ STATIC_URL }}images/sits_large_noborder.png" title="同步Steam游戏库" alt="同步Steam游戏库"/></a>
       {% if user.steamid %}
-      <a href="https://steamcommunity.com/profiles/{{user.steamid}}" class="btn" target="_blank">Visit Steam profile</a>
-      <a href="{% url "steam_disconnect" %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to clear your Steam information?')">Disconnect your account</a>
+      <a href="https://steamcommunity.com/profiles/{{user.steamid}}" class="btn" target="_blank">查看Steam个人资料</a>
+      <a href="{% url "steam_disconnect" %}" class="btn btn-danger" onclick="return confirm('Are you sure you want to clear your Steam information?')">解除Steam绑定</a>
       {% endif %}
     </section>
 
     <section>
-      <h4>Submitted contributions</h4>
+      <h4>待审核提交</h4>
       {% if pending_submissions %}
-      <p>The following contributions you submitted are awaiting approval from a
-      moderator.</p>
+      <p>以下提交正在等待审核:</p>
       <ul class="game-list">
         {% for submission in pending_submissions %}
         {% with submission.game as game %}
@@ -94,15 +91,15 @@
       </ul>
       {% else %}
       <p>
-        You have no submitted contributions awaiting approval.
+        你没有待审核的提交。
       </p>
       {% endif %}
     </section>
 
     {% if accepted_submissions %}
     <section>
-      <h4>Contributions</h4>
-      <p>These are the games you have previously submitted to Lutris</p>
+      <h4>已通过提交</h4>
+      <p>以下提交已通过审核:</p>
       <ul class="game-list">
         {% for submission in accepted_submissions %}
         {% with submission.game as game %}

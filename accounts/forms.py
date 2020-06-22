@@ -20,7 +20,7 @@ class RegistrationForm(forms.ModelForm):
 
     error_messages = {
         "duplicate_username": "用户名已存在，请换一个",
-        "password_mismatch": "两次密码不一致，请确认是否输错",
+        "password_mismatch": "两次密码不一致，请确认是否打错",
     }
     username = forms.RegexField(
         label="用户名",
@@ -42,7 +42,7 @@ class RegistrationForm(forms.ModelForm):
         label="重复密码",
         widget=forms.PasswordInput,
         max_length=64,
-        help_text="请再次输入上面输过的密码，以确保你没有输错",
+        help_text="请再次输入上面输过的密码，以确保你没有打错",
     )
 
     class Meta:

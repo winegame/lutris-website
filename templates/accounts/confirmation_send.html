@@ -7,12 +7,14 @@
   <div class="message-box col-sm-6">
     <p>
     {% if user.email_confirmed %}
-    Your email address is already confirmed!</p>
+    你的邮箱已经验证过了</p>
     {% else %}
-    An email was sent with a confirmation link, use it to confirm your email.
+    验证链接已发到你的邮箱，请查收并点击进入。
+    如果没收到，请检查是否在“垃圾邮件”分类里。
+    如果还是没收到，建议更换其他后缀的邮箱再试，或者<a href="{% url 'about' %}">联系我们</a>手动帮你验证。
     {% endif %}
     </p>
-    <a href="{% url "profile" %}">Return to profile</a>
+    <a href="{% url "profile" %}">返回个人资料</a>
   </div>
   <div class="col-sm-3"></div>
 </div>
