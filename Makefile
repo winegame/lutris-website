@@ -7,6 +7,7 @@ run:
 	./manage.py runserver 0.0.0.0:8000
 
 db:
+	./manage.py makemigrations
 	./manage.py migrate
 	./manage.py loaddata accounts/fixtures/superadmin.json
 
