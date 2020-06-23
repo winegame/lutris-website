@@ -92,6 +92,8 @@ class LoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
         super(LoginForm, self).__init__(*args, **kwargs)
+        self.fields["username"].label = "用户名"
+        self.fields["password"].label = "密码"
         self.helper = get_bootstrap_helper(
             ["username", "password"], "signin", "登录"
         )
