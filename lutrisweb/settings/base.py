@@ -30,20 +30,24 @@ ADMINS = (
 MANAGERS = ADMINS
 INTERNAL_IPS = ('127.0.0.1',)
 
-TIME_ZONE = 'Etc/UTC'
-LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Asia/Shanghai'
+LANGUAGE_CODE = 'zh-cn'
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
 # Allow customization of domain
-DOMAIN_NAME = os.environ.get("DOMAIN_NAME", "lutris.net")
+DOMAIN_NAME = os.environ.get("DOMAIN_NAME", "winegame.net")
 
 ALLOWED_HOSTS = (
     "0.0.0.0",
     "127.0.0.1",
     "localhost",
+    "game.hu60.cn",
+    "winegame.net",
+    "电脑游戏.中国",
+    "xn--unup4ylnf88m.xn--fiqs8s",
 )
 
 # Static files
