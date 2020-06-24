@@ -25,7 +25,7 @@ THUMBNAIL_DEBUG = False
 BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
 ADMINS = (
-    ('Mathieu Comandon', 'mathieucomandon@gmail.com'),
+    ('老虎会游泳', 'admin@winegame.net'),
 )
 MANAGERS = ADMINS
 INTERNAL_IPS = ('127.0.0.1',)
