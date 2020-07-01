@@ -11,7 +11,7 @@ from games import models
 
 def redirect_to(request, target):
     """Helper to redirect to the given target"""
-    redirect_url = target if target[0] == '/' else request.build_absolute_uri(reverse(target))
+    redirect_url = target if target[0] == '/' else reverse(target)
 
     # Enforce https
     if not settings.DEBUG:
