@@ -1,28 +1,31 @@
 FROM ubuntu:20.04 AS sphinxbuild
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
+    && apt-get update \
     && apt-get install -y --no-install-recommends build-essential git python3 python3-pip python3-dev \
     && rm -rf /var/lib/apt/lists/*
 COPY config/rst_template.txt /docs/rst_template.txt
 WORKDIR /docs
-RUN pip3 install --no-cache-dir docutils==0.15.2
-RUN git clone --depth 1 https://github.com/lutris/lutris
+RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/ \
+    && pip3 install --no-cache-dir docutils==0.15.2
+RUN git clone --depth 1 https://gitee.com/winegame/lutris
 RUN rst2html.py --template=rst_template.txt lutris/docs/installers.rst > /docs/installers.html
 
 
 FROM node:14-slim AS frontend
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN apt-get update \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
+    && apt-get update \
     && apt-get install -y --no-install-recommends git ca-certificates \
     && rm -rf /var/lib/apt/lists/*
-RUN npm install -g bower grunt-cli
+RUN npm install -g bower grunt-cli --registry=https://registry.npm.taobao.org
 COPY *.json Gruntfile.js .bowerrc /web/
 COPY frontend/ /web/frontend/
 WORKDIR /web
-RUN npm install
+RUN npm install --registry=https://registry.npm.taobao.org
 RUN npm run setup && npm run build
-RUN cd /web/frontend/vue/ && npm install && npm run build:issues
+RUN cd /web/frontend/vue/ && npm install --registry=https://registry.npm.taobao.org && npm run build:issues
 
 
 FROM strycore/lutriswebsite:latest
