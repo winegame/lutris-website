@@ -66,7 +66,7 @@
         <p>找不到符合筛选条件的游戏</p>
         {% if not unpublished and unpublished_match_count > 0 %}
           <p>
-            不过，有 <a href="{% append_to_get unpublished-filter='on' %}">{{ unpublished_match_count }} 个未发布游戏符合筛选条件，
+            不过，有 <a href="{% append_to_get unpublished-filter='on' %}">{{ unpublished_match_count }} 个未发布游戏</a>符合筛选条件，
             你可以勾选“显示尚未发布的游戏”来显示它们。
           </p>
         {% else %}
