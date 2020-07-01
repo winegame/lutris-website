@@ -428,7 +428,7 @@ class LibraryFilterForm(forms.Form):
             attrs={'data-width': '100%',
                    'data-close-on-select': 'false',
                    'data-placeholder': '',
-                   'data-minimum-input-length': 2}
+                   'data-minimum-input-length': 0}
         ),
         required=False,
         label="平台"
@@ -441,7 +441,7 @@ class LibraryFilterForm(forms.Form):
             attrs={'data-width': '100%',
                    'data-close-on-select': 'false',
                    'data-placeholder': '',
-                   'data-minimum-input-length': 3}
+                   'data-minimum-input-length': 0}
         ),
         required=False,
         label="类型"
@@ -454,7 +454,7 @@ class LibraryFilterForm(forms.Form):
             attrs={'data-width': '100%',
                    'data-close-on-select': 'false',
                    'data-placeholder': '',
-                   'data-minimum-input-length': 3}
+                   'data-minimum-input-length': 0}
         ),
         required=False,
         label="开发商"
