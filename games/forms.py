@@ -72,10 +72,12 @@ class GameForm(forms.ModelForm):
             "platforms": Select2MultipleWidget,
             "genres": Select2MultipleWidget,
             "developer": ModelSelect2Widget(
-                model=models.Company, search_fields=["name__icontains"]
+                model=models.Company, search_fields=["name__icontains"],
+                attrs={'data-minimum-input-length': 0}
             ),
             "publisher": ModelSelect2Widget(
-                model=models.Company, search_fields=["name__icontains"]
+                model=models.Company, search_fields=["name__icontains"],
+                attrs={'data-minimum-input-length': 0}
             ),
         }
 
@@ -200,10 +202,12 @@ class GameEditForm(forms.ModelForm):
             "platforms": Select2MultipleWidget,
             "genres": Select2MultipleWidget,
             "developer": ModelSelect2Widget(
-                model=models.Company, search_fields=["name__icontains"]
+                model=models.Company, search_fields=["name__icontains"],
+                attrs={'data-minimum-input-length': 0}
             ),
             "publisher": ModelSelect2Widget(
-                model=models.Company, search_fields=["name__icontains"]
+                model=models.Company, search_fields=["name__icontains"],
+                attrs={'data-minimum-input-length': 0}
             ),
         }
 
