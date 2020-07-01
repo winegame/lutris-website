@@ -220,7 +220,7 @@ SELECT2_CSS = '/static/select2/dist/css/select2.min.css'
 # Email
 
 
-SEND_EMAILS = True
+SEND_EMAILS = False
 if os.environ.get('DJANGO_TESTS') == "1":
     SEND_EMAILS = False
     AXES_ENABLED = False
