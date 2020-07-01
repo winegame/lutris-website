@@ -6,7 +6,15 @@ MEDIA_URL = '//%s/media/' % DOMAIN_NAME
 FILES_ROOT = '/srv/files'
 FILES_URL = 'https://%s/files/' % DOMAIN_NAME
 
-ALLOWED_HOSTS = ('.lutris.net', '0.0.0.0')
+ALLOWED_HOSTS = (
+    "0.0.0.0",
+    "127.0.0.1",
+    "localhost",
+    "game.hu60.cn",
+    "winegame.net",
+    "电脑游戏.中国",
+    "xn--unup4ylnf88m.xn--fiqs8s",
+)
 
 DATABASES = {
     'default': {
