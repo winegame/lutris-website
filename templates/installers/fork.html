@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Fork installer {{ installer }}
+基于 {{installer}} 创建新脚本
 {% endblock title %}
 
 
@@ -13,16 +13,14 @@ Fork installer {{ installer }}
 {% block content %}
 <div class="row">
 <div class="message-view col-md-6 col-md-offset-3">
-  <h4>Fork installer {{installer}}</h4>
+  <h4>基于 {{installer}} 创建新脚本</h4>
   <p>
-    You can create a new installer based on an existing one by forking it, select the
-    game you want to apply it to and you will be redirected to the newly created installer.
+    你可以通过分叉功能创建基于现有安装脚本的新脚本，选择要应用到的游戏，点击“分叉”即可。
   </p>
   <p>
-    <strong>Important</strong>: If you wish to modify an installer <strong>you do not need to fork
-    it.</strong>, you can edit the existing one and submit your modifications
-    for review. Any fork that doesn't provide additional features over an existing one will
-    <strong>immediatly be deleted</strong> during our moderation process.
+    <strong>注意</strong>: 如果你只是想修改现有安装脚本，<strong>不需要分叉它，</strong>
+    只需要点击“编辑安装脚本”即可。没有必要的分叉会在审核过程中<strong>被删除</strong>，
+    相关改动会被合并到现有脚本中。
   </p>
 
   <div>
@@ -30,8 +28,8 @@ Fork installer {{ installer }}
       {% csrf_token %}
       {{ form.as_p }}
       <p class="form-actions right">
-        <a href="{% url "game_detail" slug=installer.game.slug %}" class='btn'>Cancel</a>
-        <input type="submit" class="btn btn-primary" value="Fork">
+        <a href="{% url "game_detail" slug=installer.game.slug %}" class='btn'>取消</a>
+        <input type="submit" class="btn btn-primary" value="分叉">
       </p>
     </form>
   </div>

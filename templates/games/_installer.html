@@ -3,7 +3,7 @@
 {% load humanize %}
 <li class="installer-details{% if not installer.published %} installer-unpublished{% endif %}">
     <div class="btn-group right">
-      <a href='winegame:{{ installer.slug }}' class="btn"><i class="icon-download-alt"></i> Install</a>
+      <a href='winegame:{{ installer.slug }}' class="btn"><i class="icon-download-alt"></i> 安装</a>
       <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
         <span class="caret"></span>
         <span class="sr-only">Toggle Dropdown</span>
@@ -16,13 +16,13 @@
               {% url 'edit_installer' slug=installer.slug as edit_url %}
               <a href="{{ edit_url }}">
                 <i class='glyphicon  glyphicon-edit'></i>
-                Edit installer </a>
+                编辑安装脚本 </a>
             </li>
             <li>
               {% url 'fork_installer' slug=installer.slug as fork_url %}
               <a href="{{ fork_url }}">
                 <i class='glyphicon  glyphicon-leaf'></i>
-                Fork installer
+                分叉为新脚本
               </a>
             </li>
           {% endif %}
@@ -32,7 +32,7 @@
               {% url 'admin:games_installer_change' installer.id as admin_url %}
               <a href="{{ admin_url }}">
                 <i class='glyphicon  glyphicon-lock'></i>
-                Admin installer
+                管理安装脚本
               </a>
             </li>
           {% endif %}
@@ -42,7 +42,7 @@
               {% url 'publish_installer' slug=installer.slug as publish_installer %}
               <a href="{{ publish_installer }}">
                 <i class='glyphicon  glyphicon-ok'></i>
-                Publish installer
+                发布安装脚本
               </a>
             </li>
           {% endif %}
@@ -50,20 +50,20 @@
           <li>
             {% url 'view_installer' id=installer.id as view_url %}
             <a href="{{ view_url }}">
-              <i class='glyphicon  glyphicon-eye-open'></i> View install script</a>
+              <i class='glyphicon  glyphicon-eye-open'></i> 查看安装脚本</a>
           </li>
 
         {% endif %}
         <li>
           <a href="{% url 'api_game_installer_list' slug=installer.slug %}?format=json">
-            <i class='glyphicon  glyphicon-download-alt'></i> Download install script
+            <i class='glyphicon  glyphicon-download-alt'></i> 下载安装脚本
           </a>
         </li>
         {% if user.is_authenticated %}
         <li>
           <a href="#" onclick="submitInstallerIssue(event)" data-slug="{{installer.slug}}">
             <i class='glyphicon  glyphicon-flag'></i>
-            Report issue
+            报告问题
           </a>
         </li>
         {% endif %}
@@ -71,14 +71,14 @@
     </div>
   <div class="centered-vertical">
     <span class='filter-link'>{{ installer.runner }}</span>
-    <span class='installer-name'>{{ installer.version|capfirst }} version</span>
+    <span class='installer-name'>{{ installer.version|capfirst }}</span>
     <span class="discreet-text">
-      {% if installer.updated_at %}last published {{ installer.updated_at | naturaltime }}{% endif %}
-      {% if installer.latest_version %}, last edit made {{ installer.latest_version.revision.date_created | naturaltime }}
+      {% if installer.updated_at %}最后发布时间: {{ installer.updated_at | naturaltime }}{% endif %}
+      {% if installer.latest_version %}, 最后修改时间: {{ installer.latest_version.revision.date_created | naturaltime }}
         {% if user.is_staff %}
         <br/>
         <a href="https://dashboard.lutris.net/#/installers/submissions/{{installer.latest_version.revision.id}}" class="btn btn-xs btn-danger">
-        Review installer
+        审阅安装脚本
         </a>
         {% endif %}
       {% endif %}
@@ -87,7 +87,7 @@
   {% if installer.rating %}{% rating %}{% endif %}
   {% if installer.draft %}
   <p class="discreet-text">
-    <strong>This installer is a draft. It hasn't been reviewed and might not be finished.</strong>
+    <strong>这是安装脚本草稿，未经审核，可能未完成或有问题。如果有人编写了恶意安装脚本，可能会对你的计算机造成危害，请谨慎使用。</strong>
   </p>
   {% endif %}
   {% if installer.description %}
