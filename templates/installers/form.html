@@ -41,9 +41,9 @@
         class='btn'
         id="test-installer-button"
         {% if revision_id %}
-        href="lutris:{{game.slug}}?revision={{revision_id}}"
+        href="winegame:{{game.slug}}?revision={{revision_id}}"
         {% else %}
-        href="lutris:{{installer.slug}}"
+        href="winegame:{{installer.slug}}"
         {% endif %}
       >测试该脚本</a>
       {% endif %}
