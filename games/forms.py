@@ -417,6 +417,9 @@ class ForkInstallerForm(forms.ModelForm):
                 model=models.Game, search_fields=["name__icontains"]
             )
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields["game"].label = "游戏"
 
 
 class LibraryFilterForm(forms.Form):
