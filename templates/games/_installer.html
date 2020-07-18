@@ -77,7 +77,7 @@
       {% if installer.latest_version %}, 最后修改时间: {{ installer.latest_version.revision.date_created | naturaltime }}
         {% if user.is_staff %}
         <br/>
-        <a href="https://dashboard.lutris.net/#/installers/submissions/{{installer.latest_version.revision.id}}" class="btn btn-xs btn-danger">
+        <a href="https://dashboard.winegame.net/#/installers/submissions/{{installer.latest_version.revision.id}}" class="btn btn-xs btn-danger">
         审阅安装脚本
         </a>
         {% endif %}
