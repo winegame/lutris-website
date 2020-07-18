@@ -71,7 +71,8 @@
           </p>
         {% else %}
           <p>
-            你可以考虑向我们的数据库<a href="{% url 'game-submit' %}">提交游戏</a>
+            尝试勾选<a href="{% append_to_get unpublished-filter='on' %}">显示尚未发布的游戏</a>看看能不能搜到。
+            如果还是找不到，可以考虑向我们的数据库<a href="{% url 'game-submit' %}">提交游戏</a>。
           </p>
         {% endif %}
       </div>
