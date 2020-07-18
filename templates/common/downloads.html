@@ -1,224 +1,48 @@
 {% extends "base.html" %}
-{% block title %}Download Lutris{% endblock %}
+{% block title %}下载Wine游戏助手{% endblock %}
 
 {% block content %}
-<h1>Downloads</h1>
+<h1>下载Wine游戏助手</h1>
 <div class="row">
   <div class="col-lg-12">
-    <article>
-      <p>
-        Lutris is compatible with any up-to-date Linux system. It relies on
-        Python 3 and GTK libraries and will run on any desktop environment.
-        Packages are provided for current Linux distributions. In some cases,
-        Lutris will be available without adding additional software sources but
-        if that's not the case, follow the instructions specific to your
-        distribution below.
-      </p>
-    </article>
-    <article>
-      <p>
-        <strong>Make sure to install Wine and drivers!</strong><br/>
-        If you plan on playing games for Windows, to ensure a smooth
-        experience, install a recent version of
-        <a href="https://wiki.winehq.org/Download">Wine</a> on your
-        system. This will provide all necessary dependency as Lutris cannot ship
-        with every component in its <a href="https://github.com/lutris/lutris/wiki/Lutris-Runtime">
-        runtime</a>. When playing games lutris will use
-        a custom version of Wine optimized for games.<br>
-      </p>
-    </article>
     <ul class='download-list'>
       <li>
         <ul>
           <li>
-            <img src='{{ STATIC_URL }}images/icons/pop_os.png' alt='Pop!_OS'>Pop!_OS
-          </li>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/ubuntu.png' alt='Ubuntu'>Ubuntu
-          </li>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/elementary_os.png' alt='Elementary OS'>Elementary
-          </li>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/linux_mint.png' alt='Linux Mint'>Linux Mint
+            <img src='{{ STATIC_URL }}images/icons/debian.png' alt='Debian'>Debian 10<br>
+            UOS 20<br>
+            Deepin 20
           </li>
         </ul>
         <p>
-          Packages compatible with Ubuntu and derivatives are available on the
-          <a href="https://launchpad.net/~lutris-team/+archive/ubuntu/lutris">PPA</a>.<br/>
-          You can add a repository using terminal to receive automatic updates:<br/>
-          <br/>
-          <code>sudo add-apt-repository ppa:lutris-team/lutris</code><br/>
-          <code>sudo apt update</code><br/>
-          <code>sudo apt install lutris</code><br/><br/>
-          Lutris is now available on Pop!_OS through <a href="appstream://net.lutris.Lutris">Pop!_Shop</a>.
+          <a href="https://file.winegame.net/packages/deepin/net.winegame.client_0.5.7_amd64.deb">点击下载</a>
+          <br><br>
+          UOS 20 安装前需要打开开发者模式，运行游戏前需要安装支持Vulkan的显卡驱动，
+          <a href="https://www.hu60.cn/q.php/bbs.topic.94828.html">点击查看开发者模式和显卡驱动相关教程</a>。
+          <br><br>
+          UOS 20 和 Deepin 20 可以双击安装包进行安装。
+          <br><br>
+          Debian 10 可以通过命令行进行安装：
+          <code>sudo apt install ~/Downloads/net.winegame.client_0.5.7_amd64.deb</code>
+          其中 <b>~/Downloads/net.winegame.client_0.5.7_amd64.deb</b> 是安装包路径。
         </p>
       </li>
       <li>
         <ul>
           <li>
-            <img src='{{ STATIC_URL }}images/icons/debian.png' alt='Debian'>Debian
+            <img src="{{ STATIC_URL }}images/icons/github-32.png" alt="Source">源代码
           </li>
         </ul>
         <p>
-          Packages compatible with Debian are available on the
-          <a href="https://software.opensuse.org/download.html?project=home%3Astrycore&package=lutris">openSUSE Build Service</a>.
-          <br/>
-          You can add a repository using terminal to receive automatic updates:<br/>
-          <br/>
-          <code>echo "deb http://download.opensuse.org/repositories/home:/strycore/Debian_10/ ./" | sudo tee /etc/apt/sources.list.d/lutris.list</code><br/>
-          <code>wget -q https://download.opensuse.org/repositories/home:/strycore/Debian_10/Release.key -O- | sudo apt-key add -</code><br/>
-          <code>apt update</code><br/>
-          <code>apt install lutris</code>
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li><img src="{{STATIC_URL}}images/icons/solus.png" alt="Solus">Solus</li>
-        </ul>
-        <p>
-          Lutris is available in the Solus Software Center<br/><br/>
-          <code>sudo eopkg it lutris</code>
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/fedora.png' alt='Fedora'>Fedora
-          </li>
-        </ul>
-        <p>
-          Lutris is available in the official repositories<br/><br/>
-          <code>sudo dnf install lutris</code>
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/open_suse.png' alt='openSUSE'>openSUSE
-          </li>
-        </ul>
-        <p>
-          Packages for current versions of openSUSE are available from the
-          <a href="https://software.opensuse.org/package/lutris">openSUSE repositories</a> via YaST or commandline<br/><br/>
-          <code>sudo zypper in lutris</code>
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/arch_linux.png' alt='Arch Linux'>Arch Linux
-          </li>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/manjaro.png' alt='Manjaro'>Manjaro
-          </li>
-        </ul>
-        <p>
-        You can get Lutris from the
-        <a href="https://www.archlinux.org/packages/community/any/lutris/">Arch Community Repository</a>. Updates on Manjaro are delayed.<br/><br/>
-        <code>sudo pacman -S lutris</code>
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li><img src="{{STATIC_URL}}images/icons/clearlinux.png" alt="Solus">Clear Linux</li>
-        </ul>
-        <p>
-          Lutris is available as a bundle.<br/><br/>
-          <code>sudo swupd bundle-add lutris</code>
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/mageia.png' height="32px" alt='Mageia'>Mageia
-          </li>
-        </ul>
-        <p>
-        Lutris is available in Mageia App Db:
-        <a href="https://madb.mageia.org/package/show/name/lutris">https://madb.mageia.org/package/show/name/lutris</a><br/>
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/gentoo_linux.png' alt='Gentoo'>Gentoo
-          </li>
-        </ul>
-        <p>
-        Lutris is available in portage tree:
-        <a href="https://packages.gentoo.org/packages/games-util/lutris">https://packages.gentoo.org/packages/games-util/lutris</a>
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/slackware.png' alt='Slackware'>Slackware
-          </li>
-        </ul>
-        <p>
-        Lutris is available from the SlackBuilds repositories (may not be up to date):
-        <a href="https://slackbuilds.org/apps/lutris/">https://slackbuilds.org/apps/lutris/</a>
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/centos.png' alt='CentOS'>CentOS
-          </li>
-        </ul>
-        <p>
-        For CentOS 8 and RHEL 8 You can clone
-        <a href="https://github.com/jatin-cbs/Lutris-RHEL-CentOS-8">
-          this github repository</a> to install Lutris.
-        Please contribute to <a href="https://github.com/jatin-cbs/Lutris-RHEL-CentOS-8">@jatin-cbs' repo on Github</a> to improve
-        Lutris support on CentOS.
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <img src='{{ STATIC_URL }}images/icons/package.png' alt='Tarball package'>Tarball
-          </li>
-        </ul>
-        <p>
-        Lutris is available as a <a href="{{ download_url }}lutris_{{ version }}.tar.xz">tar.xz package</a>.
-        You can run the project directly from the extracted archive but you might not have all features installed
-        such as the browser integration or xboxdrv support.
-        You'll need to make sure you have the necessary dependencies for Python 3 (PyGObject3 and PyYAML).<br/>
-        <strong>Warning:</strong> Please do not use <code>setup.py install</code> to install Lutris.
-        It does not fully install lutris, some aspects are handled by the distribution's package manager.
-        Additionally, Python's setuptools do not allow to easily uninstall software installed in such a manner.
-        </p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            <img src="{{ STATIC_URL }}images/icons/github-32.png" alt="Source">Source
-          </li>
-        </ul>
-        <p>
-        Lutris is constantly evolving. If you want to try out the latest
-        features or help with the development, you can get Lutris from Github:
-        <code>git clone https://github.com/lutris/lutris.git</code><br/>
-        You do not need to <em>install</em> Lutris to run it, <code>cd</code> in the
-        source folder and run <code>./bin/lutris -d</code><br/>
-        <strong>Warning:</strong> If Lutris isn't installed from your package
-        manager already, some features such as browser integration or xboxdrv
-        support will be missing. We recommend you keep the latest release version
-        installed, even if you plan on using the development branch.
-        <br/>
-        Please report all problems on the
-        <a href="https://github.com/lutris/lutris/issues">bugtracker</a>
-          or on
-        <a href="irc://irc.freenode.org:6667/lutris">IRC (#lutris on Freenode)</a>
+          可以前往 <a href="https://gitee.com/winegame/lutris">https://gitee.com/winegame/lutris</a> 获取Wine游戏助手的源代码。
         </p>
       </li>
     </ul>
     <p class="footnote right">
-    Icons by
-    <a href='https://www.fatcow.com/free-icons'>FatCow</a> under
+    图标来自
+    <a href='https://www.fatcow.com/free-icons'>FatCow</a>，以
     <a href="https://creativecommons.org/licenses/by/3.0/us/">CC-BY-3.0-US</a>
+    进行许可
     </p>
   </div>
 </div>
