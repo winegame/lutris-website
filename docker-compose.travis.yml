@@ -23,6 +23,8 @@ services:
     depends_on:
       - lutrisdb
       - lutrisfrontend
+    extra_hosts:
+      - steamcommunity.com:${STEAMCOMMUNITY_IP}
 
   lutrisfrontend:
     build:

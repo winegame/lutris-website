@@ -20,6 +20,8 @@ services:
     depends_on:
       - lutrisdb
       - lutriscache
+    extra_hosts:
+      - steamcommunity.com:${STEAMCOMMUNITY_IP}
 
   lutrisworker:
     restart: always
@@ -37,6 +39,8 @@ services:
       - lutrisdb
       - lutriscache
     command: celery worker -A lutrisweb.celery.app -B -l info
+    extra_hosts:
+      - steamcommunity.com:${STEAMCOMMUNITY_IP}
 
   lutrisnginx:
     restart: always
