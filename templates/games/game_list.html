@@ -10,7 +10,7 @@
 <!-- HEADER -->
 <div class="header-wrap">
   <h1>游戏列表 <small>共 {{ paginator.count }} 个
-    {% if unpublished_match_count > 0 %}<b>({{unpublished_match_count}} 个尚未发布)</b> {% endif %}</small>
+    {% if unpublished_match_count > 0 %}<b>(<a href="{% append_to_get unpublished-filter='on' %}">{{unpublished_match_count}} 个尚未发布</a>)</b> {% endif %}</small>
     <span style="float: right;font-size: initial;margin-right: 1em;">
         排序
         <select id="order_by" style="color:black;"
