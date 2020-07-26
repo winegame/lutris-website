@@ -63,7 +63,7 @@
         <li>
           <a href="#" onclick="submitInstallerIssue(event)" data-slug="{{installer.slug}}">
             <i class='glyphicon  glyphicon-flag'></i>
-            报告问题
+            提交反馈
           </a>
         </li>
         {% endif %}
@@ -73,8 +73,8 @@
     <span class='filter-link'>{{ installer.runner }}</span>
     <span class='installer-name'>{{ installer.version|capfirst }}</span>
     <span class="discreet-text">
-      {% if installer.updated_at %}最后发布时间: {{ installer.updated_at | naturaltime }}{% endif %}
-      {% if installer.latest_version %}, 最后修改时间: {{ installer.latest_version.revision.date_created | naturaltime }}
+      {% if installer.updated_at %}发布时间: {{ installer.updated_at | naturaltime }}{% endif %}
+      {% if installer.latest_version %}, 修改时间: {{ installer.latest_version.revision.date_created | naturaltime }}
         {% if user.is_staff %}
         <br/>
         <a href="https://dashboard.winegame.net/#/installers/submissions/{{installer.latest_version.revision.id}}" class="btn btn-xs btn-danger">

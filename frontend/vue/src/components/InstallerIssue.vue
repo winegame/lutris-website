@@ -10,7 +10,7 @@
     <p v-html="getMarkup(issue.description)"></p>
     <span v-if="issue.replies.length">
       <a href="#" @click.prevent="onShowReplies">
-        显示 {{ issue.replies.length }} 回复
+        显示{{ issue.replies.length }}条回复
       </a>
     </span>
     <span> <a href="#" @click.prevent="onReplyClick">回复</a> </span>
@@ -55,30 +55,30 @@
     </transition>
     <md-dialog-confirm
       :md-active.sync="showSolvedConfirmation"
-      md-title="Close this issue?"
-      md-content="If this issue is solved, please close it. Also include any helpful information."
-      md-confirm-text="Yes"
-      md-cancel-text="No"
+      md-title="是否关闭该反馈？"
+      md-content="如果问题已解决，并且不再包含对其他人有用的信息，则可以将其关闭。"
+      md-confirm-text="是"
+      md-cancel-text="否"
       @md-cancel="showSolvedConfirmation = false;"
       @md-confirm="onSolvedConfirmed"
       style="background-color: #444444;"
     />
     <md-dialog-confirm
       :md-active.sync="showDeleteConfirmation"
-      md-title="Delete this issue?"
-      md-content="This will complety erase the issue."
-      md-confirm-text="Yes"
-      md-cancel-text="No"
+      md-title="是否删除该反馈？"
+      md-content="该反馈及其所有回复都将被彻底删除！"
+      md-confirm-text="是"
+      md-cancel-text="否"
       @md-cancel="showDeleteConfirmation = false;"
       @md-confirm="onDeleteConfirmed"
       style="background-color: #444444;"
     />
     <md-dialog-confirm
       :md-active.sync="showDeleteReplyConfirmation"
-      md-title="Delete this reply?"
-      md-content="This will complety erase this reply."
-      md-confirm-text="Yes"
-      md-cancel-text="No"
+      md-title="是否删除该回复？"
+      md-content="该回复将被彻底删除！"
+      md-confirm-text="是"
+      md-cancel-text="否"
       @md-cancel="showDeleteReplyConfirmation = false;"
       @md-confirm="onDeleteReplyConfirmed"
       style="background-color: #444444;"
