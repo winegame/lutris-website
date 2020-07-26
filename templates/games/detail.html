@@ -291,11 +291,11 @@
         dataType: "json",
         success: function (response) {
           if(response.status === 'error') {
-            alert(response.message);
+            alert('提交失败: ' + response.message);
           } else {
             issueContent.value = "";
             $('#installer-issue-modal').modal('toggle');
-            alert("Thank you for your feedback");
+            alert("感谢您的反馈");
           }
         }
       })
