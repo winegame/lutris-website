@@ -33,7 +33,7 @@ docker-compose --verbose -f docker-compose.prod.yml build $COMPOSE_OPTS lutriswo
 echo "Bringing Docker Compose up"
 echo ------------ 3 ------------
 # 第一次可能会失败，所以执行两次
-docker-compose -f docker-compose.prod.yml up -d || docker-compose -f docker-compose.prod.yml up -d
+docker-compose -f docker-compose.prod.yml up --build -d || docker-compose -f docker-compose.prod.yml up --build -d
 
 echo ------------ 4 ------------
 docker-compose -f docker-compose.prod.yml run lutrisweb ./manage.py migrate
