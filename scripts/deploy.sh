@@ -30,14 +30,17 @@ docker-compose --verbose -f docker-compose.prod.yml build $COMPOSE_OPTS lutriswe
 echo ------------ 2 ------------
 docker-compose --verbose -f docker-compose.prod.yml build $COMPOSE_OPTS lutrisworker
 
-echo "Bringing Docker Compose up"
 echo ------------ 3 ------------
-# 第一次可能会失败，所以执行两次
-docker-compose -f docker-compose.prod.yml up --build -d || docker-compose -f docker-compose.prod.yml up --build -d
+docker-compose -f docker-compose.prod.yml build $COMPOSE_OPTS lutrisnginx
 
+echo "Bringing Docker Compose up"
 echo ------------ 4 ------------
+# 第一次可能会失败，所以执行两次
+docker-compose -f docker-compose.prod.yml up -d || docker-compose -f docker-compose.prod.yml up -d
+
+echo ------------ 5 ------------
 docker-compose -f docker-compose.prod.yml run lutrisweb ./manage.py migrate
 
 echo "Restarting NGinx"
-echo ------------ 5 ------------
+echo ------------ 6 ------------
 docker-compose -f docker-compose.prod.yml restart lutrisnginx
