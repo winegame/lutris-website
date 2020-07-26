@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "ace-builds": "^1.4.11",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "select2": "^4.0.7"
   }
 }
