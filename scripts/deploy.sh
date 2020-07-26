@@ -24,12 +24,20 @@ else
     export HTTP_PORT=81
 fi
 
+echo ------------ 1 ------------
 docker-compose --verbose -f docker-compose.prod.yml build $COMPOSE_OPTS lutrisweb
+
+echo ------------ 2 ------------
 docker-compose --verbose -f docker-compose.prod.yml build $COMPOSE_OPTS lutrisworker
 
 echo "Bringing Docker Compose up"
-docker-compose -f docker-compose.prod.yml up -d
+echo ------------ 3 ------------
+# 第一次可能会失败，所以执行两次
+docker-compose -f docker-compose.prod.yml up -d || docker-compose -f docker-compose.prod.yml up -d
+
+echo ------------ 4 ------------
 docker-compose -f docker-compose.prod.yml run lutrisweb ./manage.py migrate
 
 echo "Restarting NGinx"
+echo ------------ 5 ------------
 docker-compose -f docker-compose.prod.yml restart lutrisnginx
