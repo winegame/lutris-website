@@ -2,7 +2,7 @@
   <section v-if="hasIssues">
     <div>
       <h3>
-        Issues
+        问题反馈
         <span class="title-action">
           <input
             type="checkbox"
@@ -10,7 +10,7 @@
             v-model="hideResolvedIssues"
             @click="onToggleResolvedIssues"
           />
-          <label for="resolved-issues-toggle">Hide resolved issues</label>
+          <label for="resolved-issues-toggle">隐藏已解决的问题</label>
         </span>
       </h3>
       <div v-for="installer in installer_issues" v-bind:key="installer.slug">

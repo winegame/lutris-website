@@ -1,7 +1,7 @@
 <template>
   <div class="issue" v-bind:class="{ solved: issue.solved }">
     <template v-if="issue.solved">
-      <span class="solved-badge">Solved!</span>
+      <span class="solved-badge">已解决</span>
     </template>
     <strong>{{ issue.username }}</strong>
     <em :title="getDate(issue.submitted_on)">
@@ -10,19 +10,18 @@
     <p v-html="getMarkup(issue.description)"></p>
     <span v-if="issue.replies.length">
       <a href="#" @click.prevent="onShowReplies">
-        show {{ issue.replies.length }}
-        {{ issue.replies.length > 1 ? 'replies' : 'reply' }}
+        显示 {{ issue.replies.length }} 回复
       </a>
     </span>
-    <span> <a href="#" @click.prevent="onReplyClick">reply</a> </span>
+    <span> <a href="#" @click.prevent="onReplyClick">回复</a> </span>
     <span v-if="canSolveIssue">
-      <a href="#" @click.prevent="onMarkAsSolved">mark as solved</a>
+      <a href="#" @click.prevent="onMarkAsSolved">标为解决</a>
     </span>
     <span v-if="canReopenIssue">
-      <a href="#" @click.prevent="onReopen">re-open</a>
+      <a href="#" @click.prevent="onReopen">标为未解决</a>
     </span>
     <span v-if="canDeleteIssue">
-      <a href="#" @click.prevent="onDelete">delete</a>
+      <a href="#" @click.prevent="onDelete">删除</a>
     </span>
 
     <transition name="slide-fade">
@@ -30,7 +29,7 @@
         <div class="issue-reply-form">
           <textarea v-model="replyContent"></textarea>
           <button :disabled="replyContent.length == 0" @click="onSubmitClick">
-            Submit
+            提交
           </button>
         </div>
       </template>
@@ -46,7 +45,7 @@
                 {{ reply.submitted_on | formatTimeAgo }}
               </em>
               <span v-if="canDeleteReply(reply)">
-                <a href="#" @click.prevent="onDeleteReply(reply);">delete</a>
+                <a href="#" @click.prevent="onDeleteReply(reply);">删除</a>
               </span>
               <p v-html="getMarkup(reply.description)"></p>
             </div>

@@ -20,7 +20,7 @@ Vue.filter('formatTimeAgo', formatTimeAgo);
 if (process.env.NODE_ENV === 'development') {
   axios.defaults.baseURL = 'http://localhost:8000';
 } else {
-  axios.defaults.baseURL = 'https://lutris.net';
+  axios.defaults.baseURL = 'https://winegame.net';
 }
 
 /* eslint-disable no-new */
