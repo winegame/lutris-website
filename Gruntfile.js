@@ -69,7 +69,10 @@ module.exports = function(grunt) {
         nonull: true
       },
       select2Js: {
-        src: ["components/select2/dist/js/select2.full.min.js"],
+        src: [
+          "components/select2/dist/js/select2.full.min.js",
+          "components/select2/dist/js/i18n/zh-CN.js",
+        ],
         dest: "public/js/select2.min.js",
         nonull: true
       },
