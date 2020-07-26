@@ -1,8 +1,8 @@
 Welcome {{username}},
 
 
-You have created an account on Lutris.net. 
-If you wish to post on our forums (https://forums.lutris.net) you need to
+You have created an account on winegame.net. 
+If you wish to post on our website (https://winegame.net) you need to
 confirm your email address by following the link below:
 
 {{confirmation_link}}

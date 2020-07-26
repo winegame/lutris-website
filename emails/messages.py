@@ -23,7 +23,7 @@ def send_account_creation(user, confirmation_link):
         'username': user.username,
         'confirmation_link': confirmation_link
     }
-    subject = 'Welcome to Lutris.net'
+    subject = 'Welcome to winegame.net'
     return send_email('account_creation', context, subject, user.email)
 
 
@@ -50,6 +50,6 @@ def send_email(template, context, subject, recipients, sender=None):
     # Premailer does not handle https links, the site can't access itself
     # with HTTPS inside its container.
     # Under no circumstances this should be switched to https.
-    html_part = transform(html_body, base_url='http://lutris.net')
+    html_part = transform(html_body, base_url='http://winegame.net')
     msg.attach_alternative(html_part, "text/html")
     return msg.send(False)

@@ -191,7 +191,7 @@ AUTHENTICATION_BACKENDS = (
 OPENID_SSO_SERVER_URL = 'http://steamcommunity.com/openid'
 
 DISCOURSE_SSO_SECRET = os.environ.get('DISCOURSE_SSO_SECRET')
-DISCOURSE_URL = 'https://forums.lutris.net'
+DISCOURSE_URL = 'https://hu60.cn'
 
 DISCORD_URL = "https://discordapp.com/invite/Pnt5CuY"
 DISCORD_ISSUE_WEBHOOK_ID = os.environ.get('DISCORD_ISSUE_WEBHOOK_ID')
@@ -225,8 +225,8 @@ if os.environ.get('DJANGO_TESTS') == "1":
     SEND_EMAILS = False
     AXES_ENABLED = False
 
-DEFAULT_FROM_EMAIL = "admin@lutris.net"
-SERVER_EMAIL = "admin@lutris.net"
+DEFAULT_FROM_EMAIL = "admin@winegame.net"
+SERVER_EMAIL = "admin@winegame.net"
 EMAIL_SUBJECT_PREFIX = "[Lutris] "
 
 # Celery
@@ -251,7 +251,7 @@ CELERYBEAT_SCHEDULE = {
     }
 }
 
-if DOMAIN_NAME == "lutris.net":
+if DOMAIN_NAME == "winegame.net":
     CELERYBEAT_SCHEDULE['send-daily-mod-mail'] = {
         'task': 'accounts.tasks.daily_mod_mail',
         'schedule': crontab(hour=18, minute=0),

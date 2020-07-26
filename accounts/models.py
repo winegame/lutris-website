@@ -36,7 +36,7 @@ class User(AbstractUser):  # pylint: disable=too-many-instance-attributes
         """Return the local avatar URL or one from Gravatar"""
         if self.avatar:
             return self.avatar.url
-        default_url = "https://lutris.net" + settings.STATIC_URL + "images/default-avatar.png"
+        default_url = "https://winegame.net" + settings.STATIC_URL + "images/default-avatar.png"
         size = 64
         return (
             "https://www.gravatar.com/avatar/%s?%s" % (

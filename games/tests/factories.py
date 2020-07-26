@@ -75,7 +75,7 @@ class UserFactory(factory.DjangoModelFactory):
     first_name = "Tester"
     last_name = "Testing"
     username = factory.Sequence(lambda n: 'user%d' % n)
-    email = "tester@lutris.net"
+    email = "tester@winegame.net"
     is_active = True
     email_confirmed = True
 

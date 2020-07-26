@@ -4,13 +4,13 @@ upstream lutris_server {
 
 server {
     listen 80;
-    server_name www.lutris.net;
-    return 301 $scheme://lutris.net$request_uri;
+    server_name www.winegame.net;
+    return 301 $scheme://winegame.net$request_uri;
 }
 
 server {
     listen 80;
-    server_name lutris.net;
+    server_name winegame.net;
 
     client_max_body_size 4G;
 

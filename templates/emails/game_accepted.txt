@@ -3,7 +3,7 @@ Hello {{username}}!
 Thank you for your submission for {{name}}. The game has been reviewed by a
 moderator and approved!
 
-The game's page is available at https://lutris.net{{game_url}}
+The game's page is available at https://winegame.net{{game_url}}
 You can submit an installer script for it if you haven't done so already.
 The scripting details are explained on the installer submission page,
 you can have a look at other scripts to see how they are written.

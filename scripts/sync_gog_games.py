@@ -110,7 +110,7 @@ def inspect_gog_game(gog_game):
     lutris_games = Game.objects.filter(gogid=gogid)
     for game in lutris_games:
         LOGGER.info("%s (%s) created: %s", game, game.year, game.created)
-        LOGGER.info("https://lutris.net%s", game.get_absolute_url())
+        LOGGER.info("https://winegame.net%s", game.get_absolute_url())
         if timezone.now() - game.created < timedelta(days=1):
             LOGGER.warning("Deleting %s as it was just created", game)
             game.delete()

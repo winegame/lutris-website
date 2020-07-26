@@ -521,7 +521,7 @@ def submit_game(request):
         submission.save()
 
         # Notify managers a game has been submitted
-        admin_url = "https://lutris.net" + reverse(
+        admin_url = "https://winegame.net" + reverse(
             "admin:games_game_change", args=(game.id,)
         )
         context = {

@@ -54,16 +54,16 @@ def notify_issue(issue, user, title, description):
         "embeds": [{
             "title": title,
             "description": description,
-            "url": "https://lutris.net/games/{}".format(
+            "url": "https://winegame.net/games/{}".format(
                 issue.installer.game.slug
             ),
             "color": 13965399,
             "thumbnail": {
-                "url": "https://lutris.net{}".format(issue.installer.game.banner_url)
+                "url": "https://winegame.net{}".format(issue.installer.game.banner_url)
             },
             "author": {
                 "name": user.username,
-                "url": "https://lutris.net/admin/accounts/user/{}/change/".format(
+                "url": "https://winegame.net/admin/accounts/user/{}/change/".format(
                     user.id
                 )
             },
@@ -86,16 +86,16 @@ def notify_installer(installer):
         "embeds": [{
             "title": "Installer created: %s" % installer,
             "description": "Installer %s for %s" % (installer.version, installer.runner),
-            "url": "https://lutris.net/games/{}".format(
+            "url": "https://winegame.net/games/{}".format(
                 installer.game.slug
             ),
             "color": 13965399,
             "thumbnail": {
-                "url": "https://lutris.net{}".format(installer.game.banner_url)
+                "url": "https://winegame.net{}".format(installer.game.banner_url)
             },
             "author": {
                 "name": installer.user.username,
-                "url": "https://lutris.net/admin/accounts/user/{}/change/".format(
+                "url": "https://winegame.net/admin/accounts/user/{}/change/".format(
                     installer.user.id
                 )
             },

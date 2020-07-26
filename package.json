@@ -1,9 +1,9 @@
 {
   "name": "Lutris",
-  "description": "Lutris.net website",
+  "description": "winegame.net website",
   "version": "0.3.7",
   "author": "Mathieu Comandon",
-  "homepage": "https://lutris.net",
+  "homepage": "https://winegame.net",
   "license": "GPL-3.0",
   "main": "Gruntfile.js",
   "devDependencies": {

@@ -64,7 +64,7 @@ shell:
 	./manage.py shell_plus --traceback
 
 worker:
-	celery worker -A lutrisweb -B --loglevel=debug --hostname=lutris.net -E
+	celery worker -A lutrisweb -B --loglevel=debug --hostname=winegame.net -E
 
 localdb:
 	# Create a local Postgres database for development

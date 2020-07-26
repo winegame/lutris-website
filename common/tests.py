@@ -37,10 +37,10 @@ class TestUtils(TestCase):
     def test_clean_html_keeps_links(self):
         dirty_markup = (
             "<div v-if=\"foo\" class=\"blue\">Visit "
-            "<a href=\"https://lutris.net\">Lutris.net</a> </div>"
+            "<a href=\"https://winegame.net\">winegame.net</a> </div>"
             "<br/><p>it's full of <blink>fun</blink>!</p>"
         )
         self.assertEqual(
             clean_html(dirty_markup),
-            "Visit <a href=\"https://lutris.net\">Lutris.net</a> it's full of fun!"
+            "Visit <a href=\"https://winegame.net\">winegame.net</a> it's full of fun!"
         )
