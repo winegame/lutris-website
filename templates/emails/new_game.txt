@@ -1,3 +1,5 @@
-The game {{game_name}} has been added by {{username}}.
+游戏《{{game_name}}》已由用户{{username}}提交。
 
-It can be modified and published at {{admin_link}}
+https://winegame.net{{game_url}}
+
+可在 {{admin_link}} 修改或发布。

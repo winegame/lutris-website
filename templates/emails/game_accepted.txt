@@ -1,16 +1,23 @@
-Hello {{username}}!
+您好，{{username}}：
 
-Thank you for your submission for {{name}}. The game has been reviewed by a
-moderator and approved!
+感谢您向我们提交《{{name}}》，该游戏已审核通过并公开发布。
 
-The game's page is available at https://winegame.net{{game_url}}
-You can submit an installer script for it if you haven't done so already.
-The scripting details are explained on the installer submission page,
-you can have a look at other scripts to see how they are written.
-If you get confused or have any questions about the scripting process,
-please contact us on Discord: {{DISCORD_URL}}
-or on IRC: #lutris on Freenode.
+可通过以下地址找到该游戏：
 
-Have a great day!
+https://winegame.net{{game_url}}
 
-The Lutris team
+如果你还没有给它编写安装脚本，现在可以去编写一个了。
+如果没有安装脚本，游戏不会在网站游戏列表中展示。
+
+安装脚本编辑页面有一个英文版的编写说明（待汉化）。
+您也可以查看其他游戏的安装脚本以了解如何编写。
+
+如果您对脚本编写过程感到困惑或有任何疑问，
+请通过以下方式与我们联系：
+
+论坛：https://hu60.cn/q.php/bbs.forum.170.html
+QQ群：905606003
+微信群主：SwimmingTiger
+
+祝您生活愉快！
+Wine游戏助手团队

@@ -1,8 +1,8 @@
-Hello {{username}},
+您好，{{username}}：
 
-Please click on the following link to confirm your email address:
+请点击以下链接验证您的邮箱：
 
 {{confirmation_link}}
 
-Best regards,
-The Lutris Team
+祝您游戏顺利！
+Wine游戏助手团队

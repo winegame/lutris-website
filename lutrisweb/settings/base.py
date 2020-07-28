@@ -227,7 +227,7 @@ if os.environ.get('DJANGO_TESTS') == "1":
 
 DEFAULT_FROM_EMAIL = "admin@winegame.net"
 SERVER_EMAIL = "admin@winegame.net"
-EMAIL_SUBJECT_PREFIX = "[Lutris] "
+EMAIL_SUBJECT_PREFIX = "[Wine游戏助手] "
 
 # Celery
 CELERY_SEND_TASK_ERROR_EMAILS = True

@@ -1,19 +1,9 @@
-Welcome {{username}},
+您好，{{username}}：
+欢迎注册 winegame.net 帐户！
 
-
-You have created an account on winegame.net. 
-If you wish to post on our website (https://winegame.net) you need to
-confirm your email address by following the link below:
+如果您希望启用网站 (https://winegame.net) 的找回密码功能和编辑功能（提交游戏、编写安装脚本），您需要点击以下链接验证您的邮箱：
 
 {{confirmation_link}}
 
-You can now sync your Steam account with your Lutris library and browse our
-available games to add them to your library.
-
-Once you enter your login credentials in the Lutris client, your library will
-be available automatically.
-
-
-Have fun using Lutris!
-
-The Lutris team
+祝您游戏顺利！
+Wine游戏助手团队

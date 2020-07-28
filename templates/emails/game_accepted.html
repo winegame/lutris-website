@@ -2,26 +2,26 @@
 
 
 {% block content %}
-<p>Hello {{username}}!</p>
+<p>您好，{{username}}：</p>
 
 <p>
-Thank you for your submission for <strong>{{name}}</strong>. The game has been reviewed by a
-moderator and approved!
+感谢您向我们提交《<strong>{{name}}</strong>》，该游戏已审核通过并公开发布。
 </p>
 
 <p>
-The game's page is available at
+可通过以下地址找到该游戏：
 <a href="https://winegame.net{{game_url}}">https://winegame.net{{game_url}}</a><br />
-You can submit an installer script for it if you haven't done so already.<br />
-The scripting details are explained on the installer submission page, you can
-have a look at other scripts to see how they are written. If you get confused
-or have any questions about the scripting process, please contact us on
-<a href="{{ DISCORD_URL }}">Discord</a> or on IRC:
-<a href="irc://irc.freenode.org:6667/lutris">#lutris on freenode.org</a>
+如果你还没有给它编写安装脚本，现在可以去编写一个了。如果没有安装脚本，游戏不会在网站游戏列表中展示。<br />
+安装脚本编辑页面有一个英文版的编写说明（待汉化）。您也可以查看其他游戏的安装脚本以了解如何编写。<br />
+如果您对脚本编写过程感到困惑或有任何疑问，请通过以下方式与我们联系：
 </p>
 
+<p><a href="https://hu60.cn/q.php/bbs.forum.170.html">论坛</a></p>
+<p>QQ群：905606003</p>
+<p>微信群主：SwimmingTiger</p>
+
 <p>
-Have a great day! <br />
-<strong>The Lutris team</strong>
+祝您生活愉快！<br />
+<strong>Wine游戏助手团队</strong>
 </p>
 {% endblock content %}

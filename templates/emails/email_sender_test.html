@@ -12,7 +12,7 @@
   <form action="{% url 'email_sender_test' %}" method="post" accept-charset="utf-8">
       {% csrf_token %}
       <p>
-        <label for="email">Email address to send to</label>
+        <label for="email">收件人：</label>
       </p>
       <input type="email" name="email" id="email" value=""/>
       <input type="submit" value="Continue →">

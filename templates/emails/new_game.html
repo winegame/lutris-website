@@ -3,8 +3,8 @@
 
 {% block content %}
 <p>
-  The game {{game_name}} has been added by {{username}}.
+  游戏<a href="https://winegame.net{{game_url}}">《{{game_name}}》</a>已由用户{{username}}提交。
 <br>
-  It can be modified and published at {{admin_link}}
+  可在 <a href="{{admin_link}}">{{admin_link}}</a> 修改或发布。
 </p>
 {% endblock content %}
