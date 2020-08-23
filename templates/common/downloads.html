@@ -9,31 +9,79 @@
       <li>
         <ul>
           <li>
-            UOS 20<br>
-            Deepin v20<br>
-            <img src='{{ STATIC_URL }}images/icons/debian.png' alt='Debian'>Debian 10
+            Deepin v20
+          </li>
+        </ul>
+        <p><b>
+          运行游戏前需要安装支持Vulkan的显卡驱动，<a href="https://www.hu60.cn/q.php/bbs.topic.94828.html">点击查看显卡驱动安装教程</a>。
+          <br><br>
+          Wine游戏助手已上架Deepin应用商店，在应用商店内搜索”Wine游戏助手“就能找到，点击安装即可。
+          <br>
+          <a href="https://file.winegame.net/images/deepin-app-store.png">
+            <img src="https://file.winegame.net/images/deepin-app-store.png" style="width: 80%">
+          </a>
+          <br><br>
+          推荐从应用商店安装，如需手动下载，
+          <a href="https://file.winegame.net/packages/deepin/0.5.7.1/net.winegame.client_0.5.7.1_amd64.deb">
+            可点击此处下载 0.5.7.1 版安装包
+          </a>，双击即可安装。
+          <br><br>
+          如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
+          <code>sudo apt install wine</code>
+        </b></p>
+      </li>
+      <li>
+        <ul>
+          <li>
+            UOS 20
           </li>
         </ul>
         <p><b>
           UOS用户必读：
-          UOS安全中心（deepin-defender）对本应用的性能有毁灭性影响，战网安装速度慢了10倍！<br>
-          UOS个人版可能需要参考该帖子中的方法结束安全中心相关进程，或者直接彻底卸载：<br>
-          <a href="https://hu60.cn/q.php/bbs.topic.94062.html">https://hu60.cn/q.php/bbs.topic.94062.html</a>
+          <a href="https://hu60.cn/q.php/bbs.topic.94062.html">
+            UOS安全中心（deepin-defender）对本应用的性能有毁灭性影响，战网安装速度慢了10倍！
+          </a><br>
+          UOS个人版可能需要参考该帖子中的方法结束安全中心相关进程，或者直接彻底卸载，<br>
+          否则游戏的安装和运行速度都会受到很大影响。
           <br><br>
-          <a href="https://file.winegame.net/packages/deepin/0.5.7.1/net.winegame.client_0.5.7.1_amd64.deb">点击下载 net.winegame.client_0.5.7.1_amd64.deb</a>
-          <br><br>
-          UOS 20 安装前需要打开开发者模式。所有系统运行游戏前都需要安装支持Vulkan的显卡驱动。<br>
+          因为UOS限制了非应用商店应用的安装，所以安装前需要打开开发者模式。<br>
+          此外，运行游戏前需要安装支持Vulkan的显卡驱动，
           <a href="https://www.hu60.cn/q.php/bbs.topic.94828.html">点击查看开发者模式和显卡驱动相关教程</a>。
           <br><br>
-          UOS 20 和 Deepin v20 可以双击安装包进行安装。<br>
-          如果遇到“依赖关系不满足：wine-staging”，请在终端执行以下命令安装依赖：<br>
-          <code>sudo apt install wine</code><br>
+          <a href="https://file.winegame.net/packages/deepin/0.5.7.1/net.winegame.client_0.5.7.1_amd64.deb">
+            点击下载 0.5.7.1 版安装包
+          </a>，打开开发者模式后，双击即可安装。
           <br><br>
-          Debian 10 可以通过命令行进行安装：<br>
-          <code>sudo apt install ~/Downloads/net.winegame.client_0.5.7.1_amd64.deb</code><br>
-          其中 <code>~/Downloads/net.winegame.client_0.5.7.1_amd64.deb</code> 是安装包路径。<br>
-          安装之后图标不会自动出现，需要自己复制一下（后续版本会解决）：
-          <code>cp /opt/apps/net.winegame.client/entries/applications/net.winegame.client.desktop ~/.local/share/applications/</code>
+          如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
+          <code>sudo apt install wine</code>
+        </b></p>
+      </li>
+      <li>
+        <ul>
+          <li>
+            <img src='{{ STATIC_URL }}images/icons/debian.png' alt='Debian'>Debian<br>
+            <img src='{{ STATIC_URL }}images/icons/ubuntu.png' alt='Debian'>Ubuntu
+          </li>
+        </ul>
+        <p><b>
+          运行游戏前需要安装支持Vulkan的显卡驱动，<a href="https://www.hu60.cn/q.php/bbs.topic.94828.html">点击查看显卡驱动安装教程</a>。
+          <br><br>
+          <a href="https://file.winegame.net/packages/debian/0.5.7.1/net.winegame.client_0.5.7.1_amd64.deb">
+            点击下载 0.5.7.1 版安装包
+          </a>（注意与Deepin/UOS的包不同，安装Deepin/UOS的包后应用图标不会出现）
+          <br><br>
+          如果你的桌面环境支持，双击安装包即可安装。如果不支持，请通过<code>apt</code>命令安装：<br>
+          <code>sudo apt install ~/Downloads/net.winegame.client_0.5.7.1_amd64.deb</code>
+          <br><br>
+          其中 <code>~/Downloads/net.winegame.client_0.5.7.1_amd64.deb</code> 是安装包路径。
+          <br><br>
+          注意：只写文件名是不行的，比如以下是错误例子，会报找不到这样的软件包：<br>
+          <code>sudo apt install net.winegame.client_0.5.7.1_amd64.deb</code><br>
+          如果安装包在当前目录，必须加<code>./</code>：<br>
+          <code>sudo apt install ./net.winegame.client_0.5.7.1_amd64.deb</code>
+          <br><br>
+          如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
+          <code>sudo apt install wine</code>
         </b></p>
       </li>
       <li>
