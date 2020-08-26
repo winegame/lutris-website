@@ -352,12 +352,12 @@ class InstallerForm(forms.ModelForm):
             raise forms.ValidationError("此字段是必填字段")
         if version.lower() == "change me" or version.lower() == "请修改该字段":
             raise forms.ValidationError('请修改该字段')
-        if version.lower().endswith("version") or \
-           version.lower().endswith("版本") or \
-           version.lower().endswith("版"):
-            raise forms.ValidationError(
-                "不要把“version”、“版本”或“版”字放在版本字段的末尾"
-            )
+        #if version.lower().endswith("version") or \
+        #   version.lower().endswith("版本") or \
+        #   version.lower().endswith("版"):
+        #    raise forms.ValidationError(
+        #        "不要把“version”、“版本”或“版”字放在版本字段的末尾"
+        #    )
         version_exists = (
             models.Installer.objects.filter(game=self.instance.game, version=version)
             .exclude(id=self.instance.id)
