@@ -39,7 +39,7 @@ echo ------------ 4 ------------
 docker-compose -f docker-compose.prod.yml up -d || docker-compose -f docker-compose.prod.yml up -d
 
 echo ------------ 5 ------------
-docker-compose -f docker-compose.prod.yml run lutrisweb ./manage.py migrate
+docker-compose -f docker-compose.prod.yml exec lutrisweb ./manage.py migrate
 
 echo "Restarting NGinx"
 echo ------------ 6 ------------
