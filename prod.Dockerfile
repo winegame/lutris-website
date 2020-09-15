@@ -14,6 +14,8 @@ RUN rst2html.py --template=rst_template.txt lutris/docs/installers.rst > /docs/i
 
 FROM node:14-slim AS frontend
 
+ENV BOWER_PROXY ""
+
 ARG DEBIAN_FRONTEND=noninteractive
 RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && apt-get update \
