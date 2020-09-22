@@ -532,7 +532,7 @@ def submit_game(request):
         subject = "用户提交了新游戏: {}".format(game.name)
         send_email("new_game", context, subject, settings.MANAGERS[0][1])
 
-        redirect_url = reverse("game-submitted")
+        redirect_url = request.build_absolute_uri(reverse("game-submitted"))
 
         # Enforce https
         if not settings.DEBUG:
