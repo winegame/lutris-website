@@ -46,5 +46,5 @@ def send_daily_mod_mail():
         moderators = [u[1] for u in settings.MANAGERS]
     else:
         moderators = [u.email for u in User.objects.filter(is_staff=True)]
-    subject = 'Your daily moderator mail'
+    subject = '每日待审内容摘要'
     return send_email('daily_mod_mail', context, subject, moderators)

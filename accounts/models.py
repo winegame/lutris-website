@@ -107,7 +107,7 @@ class EmailConfirmationToken(models.Model):
             'username': user.username,
             'confirmation_link': confirmation_link
         }
-        subject = 'Confirm your email address'
+        subject = '验证邮箱'
         messages.send_email('email_confirmation', context, subject, user.email)
 
     def is_valid(self):

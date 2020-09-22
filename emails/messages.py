@@ -13,7 +13,7 @@ def send_game_accepted(user, game):
         'name': game.name,
         'game_url': game.get_absolute_url()
     }
-    subject = u"Your game submission for '{}' has been accepted!".format(game.name)
+    subject = u"您添加的游戏 '{}' 已通过审核".format(game.name)
     return send_email('game_accepted', context, subject, user.email)
 
 
@@ -23,7 +23,7 @@ def send_account_creation(user, confirmation_link):
         'username': user.username,
         'confirmation_link': confirmation_link
     }
-    subject = 'Welcome to winegame.net'
+    subject = '欢迎来到winegame.net'
     return send_email('account_creation', context, subject, user.email)
 
 
