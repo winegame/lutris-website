@@ -103,6 +103,11 @@ class EmailConfirmationToken(models.Model):
     def send(self, request):
         user = request.user
         confirmation_link = request.build_absolute_uri(self.get_token_url())
+
+        # Enforce https
+        if not settings.DEBUG:
+            confirmation_link = confirmation_link.replace('http:', 'https:')
+
         context = {
             'username': user.username,
             'confirmation_link': confirmation_link

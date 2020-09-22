@@ -1,9 +1,9 @@
 您好，{{username}}：
 欢迎注册 winegame.net 帐户！
 
-如果您希望启用网站 (https://winegame.net) 的找回密码功能和编辑功能（提交游戏、编写安装脚本），您需要点击以下链接验证您的邮箱：
+如果您希望启用网站的找回密码功能和编辑功能（提交游戏、编写安装脚本），您需要点击以下链接验证您的邮箱：
 
-{{confirmation_link}}
+https://winegame.net{{confirmation_link}}
 
 祝您游戏顺利！
 Wine游戏助手团队
