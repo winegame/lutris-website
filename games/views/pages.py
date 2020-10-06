@@ -528,6 +528,7 @@ def submit_game(request):
             "game_name": game.name,
             "username": request.user.username,
             "admin_link": admin_url,
+            'game_url': game.get_absolute_url(),
         }
         subject = "用户提交了新游戏: {}".format(game.name)
         send_email("new_game", context, subject, settings.MANAGERS[0][1])
