@@ -30,13 +30,17 @@
   <h1>未发布的安装脚本</h1>
   {% for installer in installers %}
     {% with installer.game as game %}
-      <a href="{{ game.get_absolute_url }}">
-      {% thumbnail game.title_logo "184x69" crop="center" as img %}
-        <img src="{{ img.url }}" alt="{{ game.name }}" class="game-cover"/>
-      {% empty %}
-        <span class="game-cover">图片暂缺</span>
-      {% endthumbnail %}
-      </a>
+      <div style="display: inline-block; text-align: center; padding-bottom: 10px;">
+        <a href="{{ game.get_absolute_url }}">
+        {% thumbnail game.title_logo "184x69" crop="center" as img %}
+          <img src="{{ img.url }}" alt="{{ game.name }}" class="game-cover"/>
+        {% empty %}
+          <span class="game-cover">图片暂缺</span>
+        {% endthumbnail %}
+        </a>
+        <br />
+        <a href="{{ game.get_absolute_url }}">{{ game.name }}</a>
+      </div>
     {% endwith %}
   {% endfor %}
 {% endif %}
@@ -44,11 +48,15 @@
 {% if screenshots %}
   <h1>未发布的截图</h1>
   {% for screenshot in screenshots %}
-  <a href="{{ screenshot.game.get_absolute_url }}">
-     {% thumbnail screenshot.image '184x130' as img %}
-        <img src="{{ img.url }}" title="{{ screenshot.description }}"/>
-      {% endthumbnail %}
-    </a>
+    <div style="display: inline-block; text-align: center; padding-bottom: 10px;">
+      <a href="{{ screenshot.game.get_absolute_url }}">
+      {% thumbnail screenshot.image '184x130' as img %}
+          <img src="{{ img.url }}" title="{{ screenshot.description }}"/>
+        {% endthumbnail %}
+      </a>
+      <br />
+      <a href="{{ screenshot.game.get_absolute_url }}">{{ screenshot.description }}</a>
+    </div>
   {% endfor %}
 {% endif %}
 
@@ -56,13 +64,17 @@
   <h1>未发布的游戏</h1>
   {% for submission in submissions %}
     {% with submission.game as game %}
-      <a href="{{ game.get_absolute_url }}">
-      {% thumbnail game.title_logo "184x69" crop="center" as img %}
-        <img src="{{ img.url }}" alt="{{ game.name }}" class="game-cover"/>
-      {% empty %}
-        <span class="game-cover">no image</span>
-      {% endthumbnail %}
-      </a>
+      <div style="display: inline-block; text-align: center; padding-bottom: 10px;">
+        <a href="{{ game.get_absolute_url }}">
+        {% thumbnail game.title_logo "184x69" crop="center" as img %}
+          <img src="{{ img.url }}" alt="{{ game.name }}" class="game-cover"/>
+        {% empty %}
+          <span class="game-cover">no image</span>
+        {% endthumbnail %}
+        </a>
+        <br />
+        <a href="{{ game.get_absolute_url }}">{{ game.name }}</a>
+      </div>
     {% endwith %}
   {% endfor %}
 {% endif %}
