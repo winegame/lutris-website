@@ -139,8 +139,8 @@
           <br><br>
           要安装Wine游戏助手，请先启用32位软件源。假设你使用vim编辑器。如果你用nano，把下文的所有vim替换为nano。<br>
           <code>
-            sudo pacman -Sy vim;<br>
-            vim /etc/pacman.conf;
+            sudo pacman -Sy vim<br>
+            vim /etc/pacman.conf
           </code><br>
           然后取消以下两行的注释（删除前面的#号）：<br>
           <code>
@@ -151,14 +151,17 @@
           <br><br>
           然后打开终端并输入以下命令：<br>
           <code>
-            sudo pacman -Sy;<br>
-            sudo pacman -S aria2;<br>
-            aria2c -s5 -x5 https://file.winegame.net/packages/archlinux/0.5.7.1/net.winegame.client-0.5.7.1-1-x86_64.pkg.tar.zst;<br>
-            sudo pacman -U ./net.winegame.client-0.5.7.1-1-x86_64.pkg.tar.zst;
+            sudo pacman -Sy<br>
+            sudo pacman -S aria2<br>
+            aria2c -s5 -x5 https://file.winegame.net/packages/archlinux/0.5.7.1/net.winegame.client-0.5.7.1-2-x86_64.pkg.tar.zst<br>
+            sudo pacman -U ./net.winegame.client-0.5.7.1-2-x86_64.pkg.tar.zst
           </code>
           <br><br>
           Wine游戏助手安装完成后，请注销当前会话重新登陆，否则在网站上点“安装”按钮可能没反应，Wine游戏助手不会弹出。如果注销也没用，可以尝试重启。<br>
           如果你在网站上点安装始终没反应，你也可以直接在Wine游戏助手内搜索游戏，点击右上角的放大镜图标，输入游戏名称，然后点击“在WineGame.net上搜索”即可。
+          <br><br>
+          此外如果你需要PKGBUILD打包脚本，可以前往这里获取：
+          <a href="https://gitee.com/winegame/lutris-aur">https://gitee.com/winegame/lutris-aur</a>
         </b></p>
       </li>
       <li>
@@ -172,12 +175,20 @@
         </p>
       </li>
     </ul>
-    <p class="footnote right">
-      Linux发行版图标来自
-      <a href='https://www.fatcow.com/free-icons'>FatCow</a>，以
-      <a href="https://creativecommons.org/licenses/by/3.0/us/">CC-BY-3.0-US</a>
-      进行许可
-    </p>
+    <div class="footnote right">
+      <p>
+        Wine游戏助手应用图标由
+        <a href='https://commons.wikimedia.org/wiki/File:Tiger_Icon.svg'>Ksiom</a> 创作，以
+        <a href="https://www.gnu.org/licenses/old-licenses/fdl-1.2.html">GFDL 1.2</a>
+        进行许可。
+      </p>
+      <p>
+        Linux发行版图标来自
+        <a href='https://www.fatcow.com/free-icons'>FatCow</a>，以
+        <a href="https://creativecommons.org/licenses/by/3.0/us/">CC-BY-3.0-US</a>
+        进行许可。
+      </p>
+    </div>
   </div>
 </div>
 {% endblock %}
