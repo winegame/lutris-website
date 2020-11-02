@@ -119,6 +119,36 @@
       <li>
         <ul>
           <li>
+            <img src='{{ STATIC_URL }}images/icons/arch_linux.png' alt='Arch Linux'>Arch Linux
+          </li>
+        </ul>
+        <p><b>
+          运行游戏前需要安装支持Vulkan的显卡驱动，<a href="https://hu60.cn/q.php/bbs.topic.96696.html">点击查看显卡驱动安装教程</a>。
+          <br><br>
+          要安装Wine游戏助手，请先启用32位软件源。假设你使用vim编辑器。如果你用nano，把下文的所有vim替换为nano。<br>
+          <code>
+            sudo pacman -Sy vim;<br>
+            vim /etc/pacman.conf;
+          </code><br>
+          然后取消以下两行的注释（删除前面的#号）：<br>
+          <code>
+            [multilib]<br>
+            Include = /etc/pacman.d/mirrorlist
+          </code><br>
+          如果找不到这两行，就把它们添加到文件末尾。
+          <br><br>
+          然后打开终端并输入以下命令：<br>
+          <code>
+            sudo pacman -Sy;<br>
+            sudo pacman -S aria2;<br>
+            aria2c -s5 -x5 https://file.winegame.net/packages/archlinux/0.5.7.1/net.winegame.client-0.5.7.1-1-x86_64.pkg.tar.zst;<br>
+            sudo pacman -U ./net.winegame.client-0.5.7.1-1-x86_64.pkg.tar.zst;
+          </code>
+        </b></p>
+      </li>
+      <li>
+        <ul>
+          <li>
             <img src="{{ STATIC_URL }}images/icons/github-32.png" alt="Source">源代码
           </li>
         </ul>
