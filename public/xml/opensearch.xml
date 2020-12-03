@@ -2,6 +2,6 @@
   <ShortName>Lutris</ShortName>
   <Description>Find Games on Lutris</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://lutris.net/static/favicon.ico</Image>
-  <Url type="text/html" method="get" template="https://lutris.net/games?q={searchTerms}"/>
+  <Image width="16" height="16" type="image/x-icon">https://winegame.net/static/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://winegame.net/games?q={searchTerms}"/>
 </OpenSearchDescription>
