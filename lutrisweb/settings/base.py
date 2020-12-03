@@ -1,3 +1,4 @@
+"""Base settings"""
 import os
 from os.path import dirname, abspath
 
@@ -17,7 +18,7 @@ def media_directory(path):
     return abs_path
 
 
-CLIENT_VERSION = "0.5.7.1"
+CLIENT_VERSION = "0.5.8.1"
 
 DEBUG = True
 THUMBNAIL_DEBUG = False
@@ -263,6 +264,12 @@ BROKER_URL = "redis://%s:%s/0" % (REDIS_HOST, REDIS_PORT)
 # API Keys
 STEAM_API_KEY = os.environ.get('STEAM_API_KEY', 'NO_STEAM_API_KEY_SET')
 
+if DEBUG:
+    ANON_RATE = '99/second'
+    USER_RATE = '99/second'
+else:
+    ANON_RATE = '4/second'
+    USER_RATE = '6/second'
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_CLASSES': (
@@ -270,8 +277,8 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ),
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '60/min',
-        'user': '60/min'
+        'anon': ANON_RATE,
+        'user': USER_RATE
     },
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
