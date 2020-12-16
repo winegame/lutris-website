@@ -115,7 +115,7 @@ def dump_yaml(native_data):
     default_flow_style is disabled to ensure that every level gets expanded as
     YAML mappings and not JSON.
     """
-    return yaml.safe_dump(native_data, default_flow_style=False)
+    return yaml.safe_dump(native_data, default_flow_style=False, allow_unicode=True)
 
 
 def get_crop_size(image_size, target_ratio):
