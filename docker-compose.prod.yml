@@ -38,7 +38,7 @@ services:
     depends_on:
       - lutrisdb
       - lutriscache
-    command: celery worker -A lutrisweb.celery.app -B -l info
+    command: celery worker -A lutrisweb.celery.app -B -l debug
     extra_hosts:
       - steamcommunity.com:${STEAMCOMMUNITY_IP}
 
