@@ -7,6 +7,7 @@ import logging
 
 import reversion
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from django.db.models import Case, CharField, Value, When, IntegerField
 from reversion.models import Version
 from django.conf import settings
 from django.contrib import messages
@@ -114,11 +115,15 @@ class GameList(ListView):
             if self.q_params['search-installers']:
                 queryset = queryset.filter(installers__content__icontains=self.q_params['q'])
             else:
-                vector = SearchVector('name', weight='A') + \
-                         SearchVector('aliases__name', weight='A') + \
-                         SearchVector('description', weight='B')
-                query = SearchQuery(self.q_params['q'])
-                queryset = queryset.annotate(rank=SearchRank(vector, query)).filter(rank__gte=0.3)
+                # 老虎会游泳：全文搜索不支持中文分词，所以改为LIKE匹配
+                query = self.q_params['q']
+                queryset = queryset.annotate(rank=Case(
+                    When(Q(name__icontains=query), then=Value(3)),
+                    When(Q(aliases__name__icontains=query), then=Value(2)),
+                    When(Q(description__icontains=query), then=Value(1)),
+                    default=Value(0),
+                    output_field=IntegerField(),
+                )).filter(rank__gte=1)
         if self.q_params['platforms']:
             queryset = queryset.filter(platforms__pk__in=self.q_params['platforms'])
         if self.q_params['genres']:
