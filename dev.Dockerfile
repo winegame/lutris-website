@@ -10,7 +10,8 @@ ENV POSTGRES_HOST="lutrisdb"
 ENV POSTGRES_PORT="5430"
 ENV DJANGO_SETTINGS_MODULE="lutrisweb.settings.local"
 ENV REDIS_HOST='lutriscache'
-ENV BOWER_PROXY ""
+ARG BOWER_PROXY
+ENV BOWER_PROXY "${BOWER_PROXY}"
 
 RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
     && apt-get update && apt-get install -y sudo build-essential git curl python3 \

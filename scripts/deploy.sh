@@ -19,9 +19,11 @@ export COMPOSE_PROJECT_NAME=lutrisweb_$DEPLOY_ENV
 if [[ $DEPLOY_ENV == "prod" ]]; then
     export POSTGRES_HOST_PORT=5435
     export HTTP_PORT=82
+    source ./.env.prod
 else
     export POSTGRES_HOST_PORT=5433
     export HTTP_PORT=81
+    source ./.env
 fi
 
 echo ------------ 1 ------------

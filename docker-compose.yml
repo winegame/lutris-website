@@ -6,6 +6,9 @@ services:
     build:
       context: .
       dockerfile: dev.Dockerfile
+      args:
+        BOWER_PROXY: ${BOWER_PROXY}
+      network: host
     container_name: lutrisweb
     volumes:
       - ./:/app
@@ -31,6 +34,9 @@ services:
     build:
       context: .
       dockerfile: frontend.Dockerfile
+      args:
+        BOWER_PROXY: ${BOWER_PROXY}
+      network: host
     container_name: lutrisfrontend
     volumes:
       - ./frontend/css:/app/frontend/css
@@ -48,6 +54,9 @@ services:
   celery_worker:
     build:
       context: .
+      args:
+        BOWER_PROXY: ${BOWER_PROXY}
+      network: host
     container_name: celery_worker
     volumes:
       - type: volume
