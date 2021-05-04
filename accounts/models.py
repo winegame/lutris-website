@@ -37,13 +37,17 @@ class User(AbstractUser):  # pylint: disable=too-many-instance-attributes
         if self.avatar:
             return self.avatar.url
         default_url = "https://winegame.net" + settings.STATIC_URL + "images/default-avatar.png"
-        size = 64
-        return (
-            "https://www.gravatar.com/avatar/%s?%s" % (
-                hashlib.md5(self.email.encode('utf-8').lower()).hexdigest(),
-                urlencode({'d': default_url, 's': str(size)})
-            )
-        )
+        return default_url
+
+        # 国内打不开gravatar
+        
+        #size = 64
+        #return (
+        #    "https://www.gravatar.com/avatar/%s?%s" % (
+        #        hashlib.md5(self.email.encode('utf-8').lower()).hexdigest(),
+        #        urlencode({'d': default_url, 's': str(size)})
+        #    )
+        #)
 
     def set_steamid(self):
         """Set the Steam ID from the OpenID auth"""
