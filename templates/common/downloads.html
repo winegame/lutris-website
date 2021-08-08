@@ -9,18 +9,6 @@
       <li>
         <ul>
           <li>
-            ARM 64 CPU (鲲鹏、飞腾) 上的 UOS 20
-          </li>
-        </ul>
-        <p><b>
-          Wine游戏助手ARM64测试版发布了，<a href="https://hu60.cn/q.php/bbs.topic.101069.html">前往论坛查看如何安装</a>。
-          <br><br>
-          注意：Wine游戏助手ARM64测试版目前只能启动极少量的游戏或软件。经过测试的游戏和软件会在<a href="{% url 'game_list' %}?genres=28">ARM64兼容</a>分类中列出，请点击标有“ARM64专用”字样的安装脚本进行安装。
-        </b></p>
-      </li>
-      <li>
-        <ul>
-          <li>
             <img src='{{ STATIC_URL }}images/icons/debian.png' alt='Debian'>Debian<br>
             <img src='{{ STATIC_URL }}images/icons/ubuntu.png' alt='Ubuntu'>Ubuntu
           </li>
@@ -44,6 +32,51 @@
           <br><br>
           如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
           <code>sudo apt install wine</code>
+          <br><br>
+          Wine游戏助手安装完成后，请注销当前会话重新登陆，否则在网站上点“安装”按钮可能没反应，Wine游戏助手不会弹出。如果注销也没用，可以尝试重启。<br>
+          如果你在网站上点安装始终没反应，你也可以直接在Wine游戏助手内搜索游戏，点击右上角的放大镜图标，输入游戏名称，然后点击“在WineGame.net上搜索”即可。
+        </b></p>
+      </li>
+      <li>
+        <ul>
+          <li>
+            ARM64 CPU (鲲鹏、飞腾) 上的 UOS 20
+          </li>
+        </ul>
+        <p><b>
+          如果双击安装包后提示你“软件包架构不匹配”，请安装下面的版本。如果依然提示“软件包架构不匹配”，说明Wine游戏助手目前还没有适配你的CPU。
+          <br><br>
+          Wine游戏助手ARM64测试版发布了，<a href="https://hu60.cn/q.php/bbs.topic.101069.html">前往论坛查看如何安装</a>。
+          <br><br>
+          注意：Wine游戏助手ARM64测试版目前只能启动极少量的游戏或软件。经过测试的游戏和软件会在<a href="{% url 'game_list' %}?genres=28">ARM64兼容</a>分类中列出，请点击标有“ARM64专用”字样的安装脚本进行安装。
+        </b></p>
+      </li>
+      <li>
+        <ul>
+          <li>
+            x86_64 CPU (英特尔、AMD、兆芯、海光) 上的 UOS 20
+          </li>
+        </ul>
+        <p><b>
+          如果双击安装包后提示你“软件包架构不匹配”，请尝试上面的版本。如果依然提示“软件包架构不匹配”，说明Wine游戏助手目前还没有适配你的CPU。
+          <br><br>
+          因为UOS限制了非应用商店应用的运行，所以需要打开开发者模式才能安装游戏。<br>
+          这也是我们没有上架UOS商店的原因，上架了也不能正常安装游戏，因为我们提供的wine没有商店签名，不打开开发者模式不能运行。<br>
+          此外，运行游戏前需要安装支持Vulkan的显卡驱动，
+          <a href="https://hu60.cn/q.php/bbs.topic.94828.html">点击查看开发者模式和显卡驱动相关教程</a>。
+          <br><br>
+          <a href="https://file.winegame.net/packages/deepin/0.5.7.2/net.winegame.client_0.5.7.2_amd64.deb">
+            点击下载 0.5.7.2 版安装包（仅限UOS使用，其他发行版安装后应用图标不会出现）
+          </a>，打开开发者模式后，双击即可安装。
+          <br><br>
+          如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
+          <code>sudo apt install wine</code>
+          <br><br>
+          如果安装游戏时遇到以下错误，说明你没有打开开发者模式，请在“控制中心”>“通用”里打开开发者模式。<br>
+          <code>/home/xxx/.cache/wine/fonts/MicrosoftYaheiMono.tar.gz does not exists</code><br>
+          <a href="https://file.winegame.net/images/uos-dev-mode.png">
+            <img src="https://file.winegame.net/images/uos-dev-mode.png" style="width: 80%">
+          </a>
           <br><br>
           Wine游戏助手安装完成后，请注销当前会话重新登陆，否则在网站上点“安装”按钮可能没反应，Wine游戏助手不会弹出。如果注销也没用，可以尝试重启。<br>
           如果你在网站上点安装始终没反应，你也可以直接在Wine游戏助手内搜索游戏，点击右上角的放大镜图标，输入游戏名称，然后点击“在WineGame.net上搜索”即可。
@@ -77,35 +110,6 @@
           <br><br>
           如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
           <code>sudo apt install wine</code>
-          <br><br>
-          Wine游戏助手安装完成后，请注销当前会话重新登陆，否则在网站上点“安装”按钮可能没反应，Wine游戏助手不会弹出。如果注销也没用，可以尝试重启。<br>
-          如果你在网站上点安装始终没反应，你也可以直接在Wine游戏助手内搜索游戏，点击右上角的放大镜图标，输入游戏名称，然后点击“在WineGame.net上搜索”即可。
-        </b></p>
-      </li>
-      <li>
-        <ul>
-          <li>
-            UOS 20
-          </li>
-        </ul>
-        <p><b>
-          因为UOS限制了非应用商店应用的运行，所以需要打开开发者模式才能安装游戏。<br>
-          这也是我们没有上架UOS商店的原因，上架了也不能正常安装游戏，因为我们提供的wine没有商店签名，不打开开发者模式不能运行。<br>
-          此外，运行游戏前需要安装支持Vulkan的显卡驱动，
-          <a href="https://hu60.cn/q.php/bbs.topic.94828.html">点击查看开发者模式和显卡驱动相关教程</a>。
-          <br><br>
-          <a href="https://file.winegame.net/packages/deepin/0.5.7.2/net.winegame.client_0.5.7.2_amd64.deb">
-            点击下载 0.5.7.2 版安装包（仅限UOS使用，其他发行版安装后应用图标不会出现）
-          </a>，打开开发者模式后，双击即可安装。
-          <br><br>
-          如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
-          <code>sudo apt install wine</code>
-          <br><br>
-          如果安装游戏时遇到以下错误，说明你没有打开开发者模式，请在“控制中心”>“通用”里打开开发者模式。<br>
-          <code>/home/xxx/.cache/wine/fonts/MicrosoftYaheiMono.tar.gz does not exists</code><br>
-          <a href="https://file.winegame.net/images/uos-dev-mode.png">
-            <img src="https://file.winegame.net/images/uos-dev-mode.png" style="width: 80%">
-          </a>
           <br><br>
           Wine游戏助手安装完成后，请注销当前会话重新登陆，否则在网站上点“安装”按钮可能没反应，Wine游戏助手不会弹出。如果注销也没用，可以尝试重启。<br>
           如果你在网站上点安装始终没反应，你也可以直接在Wine游戏助手内搜索游戏，点击右上角的放大镜图标，输入游戏名称，然后点击“在WineGame.net上搜索”即可。
