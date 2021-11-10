@@ -6,7 +6,7 @@ export DEPLOY_ENV=$1
 export DEPLOY_HOST=$2
 
 COMPOSE_OPTS="--compress"
-if [[ "$3" == "--no-cache" ]]; then
+if [[ "$3" == "--no-cache" ]] || [[ "$4" == "--no-cache" ]]; then
     # Add --no-cache to build to disable cache and rebuild documentation.
     COMPOSE_OPTS="$COMPOSE_OPTS --no-cache"
 fi
@@ -40,12 +40,14 @@ echo ------------ 4 ------------
 # 第一次可能会失败，所以执行两次
 docker-compose -f docker-compose.prod.yml up -d || docker-compose -f docker-compose.prod.yml up -d
 
-echo ------------ 5 ------------
-docker-compose -f docker-compose.prod.yml exec lutrisweb ./manage.py makemigrations --merge
+if [[ "$3" == "--merge" ]] || [[ "$4" == "--merge" ]]; then
+    echo ------------ a ------------
+    docker-compose -f docker-compose.prod.yml exec lutrisweb ./manage.py makemigrations --merge
 
-echo ------------ 6 ------------
-docker-compose -f docker-compose.prod.yml exec lutrisweb ./manage.py migrate
+    echo ------------ b ------------
+    docker-compose -f docker-compose.prod.yml exec lutrisweb ./manage.py migrate
+fi
 
 echo "Restarting NGinx"
-echo ------------ 7 ------------
+echo ------------ 5 ------------
 docker-compose -f docker-compose.prod.yml restart lutrisnginx
