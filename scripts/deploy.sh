@@ -41,8 +41,11 @@ echo ------------ 4 ------------
 docker-compose -f docker-compose.prod.yml up -d || docker-compose -f docker-compose.prod.yml up -d
 
 echo ------------ 5 ------------
+docker-compose -f docker-compose.prod.yml exec lutrisweb ./manage.py makemigrations --merge
+
+echo ------------ 6 ------------
 docker-compose -f docker-compose.prod.yml exec lutrisweb ./manage.py migrate
 
 echo "Restarting NGinx"
-echo ------------ 6 ------------
+echo ------------ 7 ------------
 docker-compose -f docker-compose.prod.yml restart lutrisnginx
