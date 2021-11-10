@@ -9,13 +9,13 @@
             <i class="fas fa-angle-left fa-lg"></i>
           </a>
         {% endif %}
-        Page
+        第
         <input type="text" id="id_current_page" value="{{ page_obj.number }}"
                onkeyup="changeLibraryPage(event);"
                data-max-page={{ paginator.num_pages }}
                data-url="&paginate_by={{ paginate_by }}&ordering={{ order_by }}{{ filter_string }}"
                style="max-width: 35px;border: grey 1px solid;background: transparent;color: white;">
-        of {{ paginator.num_pages }}
+        / {{ paginator.num_pages }} 页
         {% if page_obj.has_next %}
           <a title="Next Page" href="?page={{ page_obj.next_page_number }}&paginate_by={{ paginate_by }}&ordering={{ order_by }}{{ filter_string }}">
             <i class="fas fa-angle-right fa-lg"></i>
