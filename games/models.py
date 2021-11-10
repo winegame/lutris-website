@@ -195,7 +195,7 @@ class Game(models.Model):
 
     name = models.CharField(max_length=200)
     slug = models.SlugField(unique=True, null=True, blank=True)
-    year = models.IntegerField(null=True, blank=True)
+    year = models.PositiveSmallIntegerField(null=True, blank=True)
     platforms = models.ManyToManyField(Platform, blank=True)
     genres = models.ManyToManyField(Genre, blank=True)
     publisher = models.ForeignKey(
@@ -311,6 +311,11 @@ class Game(models.Model):
         """Return labels of active flags, suitable for display"""
         # pylint: disable=E1133; self.flags *is* iterable
         return [self.flags.get_label(flag[0]) for flag in self.flags if flag[1]]
+
+    @property
+    def submission(self):
+        """Return the first (and only) submission for a game"""
+        return self.submissions.first()
 
     def get_change_model(self):
         """Returns a dictionary which can be used as initial value in forms"""
@@ -557,27 +562,6 @@ class Game(models.Model):
                 auto_installers.append(installer)
         return auto_installers
 
-    def check_for_submission(self):
-        """What? This saves submissions on save? Why?
-        This is fully wrong. The name itself is a huge red flag since nothing
-        is checked and this method has side effects.
-        """
-        # Skip freshly created and unpublished objects
-        if not self.pk or not self.is_public:
-            return
-
-        # Skip objects that were already published
-        original = Game.objects.get(pk=self.pk)
-        if original.is_public:
-            return
-
-        try:
-            submission = GameSubmission.objects.get(game=self, accepted_at__isnull=True)
-        except GameSubmission.DoesNotExist:
-            pass
-        else:
-            submission.accept()
-
     def save(
             self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
@@ -588,7 +572,6 @@ class Game(models.Model):
             if not self.slug:
                 raise ValueError("Can't generate a slug for name %s" % self.name)
             self.set_logo_from_steam()
-            self.check_for_submission()
         super(Game, self).save(
             force_insert=force_insert,
             force_update=force_update,
@@ -664,7 +647,10 @@ class InstallerManager(models.Manager):
         """Return new installers that don't have any edits"""
         return [
             installer
-            for installer in self.get_queryset().filter(published=False)
+            for installer in self.get_queryset().filter(
+                published=False,
+                draft=False
+            ).order_by("-updated_at")
             if not Version.objects.filter(
                 object_id=installer.id, content_type__model="installer"
             ).count()
@@ -694,6 +680,11 @@ class InstallerManager(models.Manager):
             except ObjectDoesNotExist:
                 game = None
 
+            if not game:
+                try:
+                    game = Game.objects.get(aliases__slug=slug)
+                except ObjectDoesNotExist:
+                    game = None
             if game:
                 installers = self.get_queryset().filter(game=game, published=True)
 
@@ -1042,8 +1033,16 @@ class GameLibrary(models.Model):
 
 class GameSubmission(models.Model):
     """User submitted game"""
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        related_name="submissions",
+        on_delete=models.CASCADE
+    )
+    game = models.ForeignKey(
+        Game,
+        related_name="submissions",
+        on_delete=models.CASCADE
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     accepted_at = models.DateTimeField(null=True)
     reason = models.TextField(blank=True, null=True)
@@ -1057,6 +1056,11 @@ class GameSubmission(models.Model):
 
     def accept(self):
         """Accept the submission and notify the author"""
+        if self.accepted_at:
+            LOGGER.warning("Submission already accepted")
+            return
+        self.game.is_public = True
+        self.game.save()
         self.accepted_at = datetime.datetime.now()
         self.save()
         messages.send_game_accepted(self.user, self.game)
