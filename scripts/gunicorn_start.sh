@@ -3,8 +3,8 @@
 NAME="lutris"
 PORT=8080
 DJANGODIR=/app
-USER=django
-GROUP=django
+USER=root
+GROUP=root
 NUM_WORKERS=9
 DJANGO_WSGI_MODULE=lutrisweb.wsgi
 

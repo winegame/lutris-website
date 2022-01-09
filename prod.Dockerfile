@@ -31,13 +31,26 @@ RUN npm run setup && npm run build
 RUN cd /web/frontend/vue/ && npm install --registry=https://registry.npm.taobao.org && npm run build:issues
 
 
-FROM strycore/lutriswebsite:latest
+FROM ubuntu:20.04
 
 ENV LC_ALL=C.UTF-8
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
+ && apt-get update \
+ && apt-get install -y locales wget gnupg build-essential git curl python3 \
+      python3-pip python3-dev imagemagick memcached libmemcached-dev libxml2-dev \
+      libxslt1-dev libssl-dev libffi-dev libpq-dev libjpeg-dev \
+ && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+COPY ./config/requirements /requirements
+RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/ \
+    && pip3 install --no-cache-dir -r /requirements/production.pip
+
 ENV DB_HOST="localhost"
 ENV DJANGO_SETTINGS_MODULE="lutrisweb.settings.production"
 
-ARG APP_USER=django
+ARG APP_USER=root
 
 RUN useradd -ms /bin/bash -d /app django
 

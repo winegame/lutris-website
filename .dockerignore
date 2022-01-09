@@ -1,6 +1,11 @@
 .env*
 .git
+.dockerignore
+.vscode
 celerybeat-schedule
 media
 static
 node_modules
+docker-compose*.yml
+*.Dockerfile
+Dockerfile
