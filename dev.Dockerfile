@@ -13,7 +13,7 @@ ENV REDIS_HOST='lutriscache'
 ARG BOWER_PROXY
 ENV BOWER_PROXY "${BOWER_PROXY}"
 
-RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.huaweicloud.com/g' /etc/apt/sources.list \
     && apt-get update && apt-get install -y sudo build-essential git curl python3 \
     python3-pip python3-dev imagemagick libxml2-dev libxslt1-dev libssl-dev libffi-dev \
     libpq-dev libxml2-dev libjpeg-dev && apt-get clean && rm -rf /var/lib/apt/lists/*

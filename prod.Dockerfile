@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 AS sphinxbuild
 ARG DEBIAN_FRONTEND=noninteractive
-RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.huaweicloud.com/g' /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends build-essential git python3 python3-pip python3-dev \
     && rm -rf /var/lib/apt/lists/*
@@ -18,7 +18,7 @@ ARG BOWER_PROXY
 ENV BOWER_PROXY "${BOWER_PROXY}"
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.huaweicloud.com/g' /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends git ca-certificates \
     && rm -rf /var/lib/apt/lists/*
@@ -36,7 +36,7 @@ FROM ubuntu:20.04
 ENV LC_ALL=C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.huaweicloud.com/g' /etc/apt/sources.list \
  && apt-get update \
  && apt-get install -y locales wget gnupg build-essential git curl python3 \
       python3-pip python3-dev imagemagick memcached libmemcached-dev libxml2-dev \

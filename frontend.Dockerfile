@@ -7,7 +7,7 @@ ENV LC_ALL=C.UTF-8
 ARG BOWER_PROXY
 ENV BOWER_PROXY "${BOWER_PROXY}"
 
-RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.aliyun.com/g' /etc/apt/sources.list \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.huaweicloud.com/g' /etc/apt/sources.list \
     && apt-get update && apt-get install -y --no-install-recommends sudo build-essential git curl ca-certificates \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
