@@ -19,8 +19,9 @@
 <div class='row'>
   <div class="col-lg-10 col-lg-offset-1">
     <p>
-      该脚本仅供参考，不能直接用来在Wine游戏助手中安装游戏。
-      要安装游戏，请<a href="{% url 'api_game_installer_list' slug=installer.slug %}?format=json">下载完整脚本</a>。
+      该脚本仅供阅读，不能直接用来在Wine游戏助手中安装游戏。<br>
+      要通过命令安装游戏，请<a href="{% url 'api_game_installer_list' slug=installer.slug %}?format=json">下载完整脚本</a>。<br>
+      安装命令：<code>/opt/apps/net.winegame.client/files/bin/winegame -i ./xxx.json</code>
     </p>
     <ul class="nav nav-tabs" role="tablist">
       <li role="presentation" class="active">
