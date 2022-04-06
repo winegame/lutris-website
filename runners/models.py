@@ -6,6 +6,8 @@ ARCH_CHOICES = (
     ("i386", "32 bit"),
     ("x86_64", "64 bit"),
     ("armv7", "ARM"),
+    ("aarch64", "ARM64"),
+    ("loongarch64", "LoongArch64"),
     ("all", "All"),
 )
 
