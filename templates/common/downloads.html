@@ -13,7 +13,7 @@
           </li>
         </ul>
         <p style="font-size: 1.2em;"><b>
-          <a href="https://hu60.cn/q.php/bbs.topic.102868.html">Steam更新导致Wine游戏助手无法启动游戏（卡在“正在启动...”阶段）的临时解决方法</a>
+          如果Wine游戏助手无法启动游戏（卡在“正在启动...”阶段），请更新到0.5.9.4版本。
           <br><br>
           Wine助手0.5.7版本已淘汰，请所有用户升级到0.5.9版本，否则将无法正常使用DXVK和VKD3D。<br>
           如果你在启动游戏时收到“Unable to get DXVK 1.9.4L-2”的提示，说明需要升级到新版本。
@@ -31,19 +31,19 @@
         <p><b>
           运行游戏前需要安装支持Vulkan的显卡驱动，<a href="https://hu60.cn/q.php/bbs.topic.94828.html">点击查看显卡驱动安装教程</a>。
           <br><br>
-          <a href="https://file.winegame.net/packages/debian/0.5.9.3/net.winegame.client_0.5.9.3_amd64.deb">
-            点击下载 0.5.9.3 版安装包（注意与Deepin/UOS的包不同，安装Deepin/UOS的包后应用图标不会出现）
+          <a href="https://file.winegame.net/packages/debian/0.5.9.4/net.winegame.client_0.5.9.4_amd64.deb">
+            点击下载 0.5.9.4 版安装包（注意与Deepin/UOS的包不同，安装Deepin/UOS的包后应用图标不会出现）
           </a>
           <br><br>
           如果你的桌面环境支持，双击安装包即可安装。如果不支持，请通过<code>apt</code>命令安装：<br>
-          <code>sudo apt install ~/Downloads/net.winegame.client_0.5.9.3_amd64.deb</code>
+          <code>sudo apt install ~/Downloads/net.winegame.client_0.5.9.4_amd64.deb</code>
           <br><br>
-          其中 <code>~/Downloads/net.winegame.client_0.5.9.3_amd64.deb</code> 是安装包路径。
+          其中 <code>~/Downloads/net.winegame.client_0.5.9.4_amd64.deb</code> 是安装包路径。
           <br><br>
           注意：只写文件名是不行的，比如以下是错误例子，会报找不到这样的软件包：<br>
-          <code>sudo apt install net.winegame.client_0.5.9.3_amd64.deb</code><br>
+          <code>sudo apt install net.winegame.client_0.5.9.4_amd64.deb</code><br>
           如果安装包在当前目录，必须加<code>./</code>：<br>
-          <code>sudo apt install ./net.winegame.client_0.5.9.3_amd64.deb</code>
+          <code>sudo apt install ./net.winegame.client_0.5.9.4_amd64.deb</code>
           <br><br>
           如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
           <code>sudo apt install wine</code>
@@ -96,8 +96,8 @@
           此外，运行游戏前需要安装支持Vulkan的显卡驱动，
           <a href="https://hu60.cn/q.php/bbs.topic.94828.html">点击查看开发者模式和显卡驱动相关教程</a>。
           <br><br>
-          <a href="https://file.winegame.net/packages/deepin/0.5.9.3/net.winegame.client_0.5.9.3_amd64.deb">
-            点击下载 0.5.9.3 版安装包（仅限UOS使用，其他发行版安装后应用图标不会出现）
+          <a href="https://file.winegame.net/packages/deepin/0.5.9.4/net.winegame.client_0.5.9.4_amd64.deb">
+            点击下载 0.5.9.4 版安装包（仅限UOS使用，其他发行版安装后应用图标不会出现）
           </a>，打开开发者模式后，双击即可安装。
           <br><br>
           如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
@@ -135,8 +135,8 @@
           >在依赖关系可以满足的情况下也可能提示“依赖关系不满足”</a>。
           <br><br>
           推荐通过应用商店或apt命令安装，如需手动下载，
-          <a href="https://file.winegame.net/packages/deepin/0.5.9.3/net.winegame.client_0.5.9.3_amd64.deb">
-            可点击此处下载 0.5.9.3 版安装包（仅限Deepin使用，其他发行版安装后应用图标不会出现）
+          <a href="https://file.winegame.net/packages/deepin/0.5.9.4/net.winegame.client_0.5.9.4_amd64.deb">
+            可点击此处下载 0.5.9.4 版安装包（仅限Deepin使用，其他发行版安装后应用图标不会出现）
           </a>，双击即可安装。
           <br><br>
           如果遇到<code>依赖关系不满足：wine-staging</code>，请在终端执行以下命令安装依赖：<br>
@@ -208,8 +208,8 @@
           <code>
             sudo pacman -Sy<br>
             sudo pacman -S aria2<br>
-            aria2c -s5 -x5 https://file.winegame.net/packages/archlinux/0.5.9.3/net.winegame.client-0.5.9.3-1-x86_64.pkg.tar.zst<br>
-            sudo pacman -U ./net.winegame.client-0.5.9.3-1-x86_64.pkg.tar.zst
+            aria2c https://file.winegame.net/packages/archlinux/0.5.9.4/net.winegame.client-0.5.9.4-1-x86_64.pkg.tar.zst<br>
+            sudo pacman -U ./net.winegame.client-0.5.9.4-1-x86_64.pkg.tar.zst
           </code>
           <br><br>
           Wine游戏助手安装完成后，请注销当前会话重新登陆，否则在网站上点“安装”按钮可能没反应，Wine游戏助手不会弹出。如果注销也没用，可以尝试重启。<br>
