@@ -2,23 +2,27 @@
 {% block title %}下载Wine游戏助手{% endblock %}
 
 {% block content %}
+<div class="row">
+  <div class="col-lg-12">
+    <h3 style="font-size: 1.5em">公告</h3>
+    <ul id="winegame-notice" class='download-list' style="font-size: 1.3em">
+      <li>加载中……</li>
+      <script>
+        (async function() {
+          try {
+            document.getElementById('winegame-notice').innerHTML = await (await fetch('/notice.html')).text();
+          } catch {
+            document.getElementById('winegame-notice').innerHTML = '<li>加载失败</li>';
+          }
+        })();
+      </script>
+    </ul>
+  </div>
+</div>
 <h1>下载Wine游戏助手</h1>
 <div class="row">
   <div class="col-lg-12">
     <ul class='download-list'>
-      <li>
-        <ul>
-          <li style="font-size: 2em;">
-            公告
-          </li>
-        </ul>
-        <p style="font-size: 1.2em;"><b>
-          如果Wine游戏助手无法启动游戏（卡在“正在启动...”阶段），请更新到0.5.9.4版本。
-          <br><br>
-          Wine助手0.5.7版本已淘汰，请所有用户升级到0.5.9版本，否则将无法正常使用DXVK和VKD3D。<br>
-          如果你在启动游戏时收到“Unable to get DXVK 1.9.4L-2”的提示，说明需要升级到新版本。
-        </b></p>
-      </li>
       <li>
         <ul>
           <li>
