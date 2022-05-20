@@ -10,7 +10,7 @@
       <script>
         (async function() {
           try {
-            document.getElementById('winegame-notice').innerHTML = await (await fetch('/notice.html')).text();
+            document.getElementById('winegame-notice').innerHTML = await (await fetch('/notice.html?r=' + Date.now())).text();
           } catch {
             document.getElementById('winegame-notice').innerHTML = '<li>加载失败</li>';
           }
