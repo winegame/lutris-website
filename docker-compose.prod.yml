@@ -9,7 +9,6 @@ services:
       dockerfile: prod.Dockerfile
       args:
         BOWER_PROXY: ${BOWER_PROXY}
-      network: host
     env_file: .env.${DEPLOY_ENV}
     volumes:
       - type: volume
@@ -33,7 +32,6 @@ services:
       dockerfile: prod.Dockerfile
       args:
         BOWER_PROXY: ${BOWER_PROXY}
-      network: host
     env_file: .env.${DEPLOY_ENV}
     volumes:
       - type: volume

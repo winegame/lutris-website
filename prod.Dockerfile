@@ -1,6 +1,6 @@
 FROM ubuntu:20.04 AS sphinxbuild
 ARG DEBIAN_FRONTEND=noninteractive
-RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.huaweicloud.com/g' /etc/apt/sources.list \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends build-essential git python3 python3-pip python3-dev \
     && rm -rf /var/lib/apt/lists/*
@@ -18,17 +18,17 @@ ARG BOWER_PROXY
 ENV BOWER_PROXY "${BOWER_PROXY}"
 
 ARG DEBIAN_FRONTEND=noninteractive
-RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.huaweicloud.com/g' /etc/apt/sources.list \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list \
     && apt-get update \
     && apt-get install -y --no-install-recommends git ca-certificates \
     && rm -rf /var/lib/apt/lists/*
-RUN npm install -g bower grunt-cli --registry=https://registry.npm.taobao.org
+RUN npm install -g bower grunt-cli --registry=https://registry.npmmirror.com
 COPY *.json Gruntfile.js .bowerrc /web/
 COPY frontend/ /web/frontend/
 WORKDIR /web
-RUN npm install --registry=https://registry.npm.taobao.org
+RUN npm install --registry=https://registry.npmmirror.com
 RUN npm run setup && npm run build
-RUN cd /web/frontend/vue/ && npm install --registry=https://registry.npm.taobao.org && npm run build:issues
+RUN cd /web/frontend/vue/ && npm install --registry=https://registry.npmmirror.com && npm run build:issues
 
 
 FROM ubuntu:20.04
@@ -36,7 +36,7 @@ FROM ubuntu:20.04
 ENV LC_ALL=C.UTF-8
 ARG DEBIAN_FRONTEND=noninteractive
 
-RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.huaweicloud.com/g' /etc/apt/sources.list \
+RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.tuna.tsinghua.edu.cn/g' /etc/apt/sources.list \
  && apt-get update \
  && apt-get install -y locales wget gnupg build-essential git curl python3 \
       python3-pip python3-dev imagemagick memcached libmemcached-dev libxml2-dev \
