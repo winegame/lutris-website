@@ -22,13 +22,13 @@ RUN sed -i 's/[a-z0-9.-]*\.[cno][oer][mtg]/mirrors.tuna.tsinghua.edu.cn/g' /etc/
     && apt-get update \
     && apt-get install -y --no-install-recommends git ca-certificates \
     && rm -rf /var/lib/apt/lists/*
-RUN npm install -g bower grunt-cli --registry=https://registry.npmmirror.com
+RUN npm install -g bower grunt-cli
 COPY *.json Gruntfile.js .bowerrc /web/
 COPY frontend/ /web/frontend/
 WORKDIR /web
-RUN npm install --registry=https://registry.npmmirror.com
+RUN npm install
 RUN npm run setup && npm run build
-RUN cd /web/frontend/vue/ && npm install --registry=https://registry.npmmirror.com && npm run build:issues
+RUN cd /web/frontend/vue/ && npm install && npm run build:issues
 
 
 FROM ubuntu:20.04
