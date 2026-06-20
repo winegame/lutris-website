@@ -1,4 +1,4 @@
-FROM node:14-buster
+FROM node:14-bullseye
 
 ARG DEBIAN_FRONTEND=noninteractive
 ARG VUE_PATH=./frontend/vue

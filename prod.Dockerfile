@@ -12,7 +12,7 @@ RUN git clone --depth 1 https://gitee.com/winegame/lutris
 RUN rst2html.py --template=rst_template.txt lutris/docs/installers.rst > /docs/installers.html
 
 
-FROM node:14-slim AS frontend
+FROM node:14-bullseye-slim AS frontend
 
 ARG BOWER_PROXY
 ENV BOWER_PROXY "${BOWER_PROXY}"
