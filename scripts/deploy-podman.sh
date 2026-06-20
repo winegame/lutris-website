@@ -38,7 +38,7 @@ podman-compose -f podman-compose.prod.yml build $COMPOSE_OPTS lutrisnginx
 echo "Bringing Docker Compose up"
 echo ------------ 4 ------------
 # 第一次可能会失败，所以执行两次
-podman-compose -f podman-compose.prod.yml up -d || podman-compose -f podman-compose.prod.yml up -d
+podman-compose --podman-run-args="--replace" -f podman-compose.prod.yml up -d || podman-compose --podman-run-args="--replace" -f podman-compose.prod.yml up -d
 
 if [[ "$3" == "--merge" ]] || [[ "$4" == "--merge" ]]; then
     echo ------------ a ------------
