@@ -63,7 +63,7 @@ module.exports = function(grunt) {
           "components/jquery/dist/jquery.js",
           "components/blueimp-canvas-to-blob/js/canvas-to-blob.js",
           "components/bootstrap/dist/js/bootstrap.js",
-          "components/jssor/js/jssor.slider.min.js",
+          // "components/jssor/js/jssor.slider.min.js",  // jssor/slider repo deleted from GitHub
         ],
         dest: "public/js/libs.js",
         nonull: true
